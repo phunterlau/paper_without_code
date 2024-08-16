@@ -1,0 +1,3 @@
+python hybridrag-prototype.py
+Query: What can you tell me about Apple's recent performance?
+Answer: Apple reported strong financial results in Q4 2023, with revenue growth of 8% year-over-year. This indicates positive performance and ongoing growth for the company during that period.
