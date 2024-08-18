@@ -1,0 +1,12 @@
+Processing chunk 1/3
+Processing chunk 2/3
+Processing chunk 3/3
+
+Compressed context:
+it one with revolution aspect other began the [CLS] the century north in in in life to of way spread, industrial quickly and parts 18th influenced almost late britain of europe point turning features marked of the the this machine animal production of and industry manual from. was by - efficiency revolution revolution one to industries was transformed productivity increased manufacturing based and. the labor invention textile industrial to to the various [SEP] making and the, jenny spinning lo revolution the of the power of
+
+Question: What was the main impact of the Industrial Revolution on manufacturing?
+
+Generated answer:
+The main impact of the Industrial Revolution on manufacturing was the transformation from manual labor to mechanized production, which significantly increased efficiency and output.
+
