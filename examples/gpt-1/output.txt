@@ -1,0 +1,19 @@
+python gpt-1-v2.py
+Using device: cpu
+Pre-training Epoch 1, Loss: 6.9613
+Pre-training Epoch 2, Loss: 3.1538
+Pre-training Epoch 3, Loss: 1.1980
+Pre-training Epoch 4, Loss: 0.4357
+Pre-training Epoch 5, Loss: 0.1178
+Fine-tuning (Classification) Epoch 1, Loss: 6.3137
+Fine-tuning (Classification) Epoch 2, Loss: 2.7855
+Fine-tuning (Classification) Epoch 3, Loss: 2.1172
+Fine-tuning (Classification) Epoch 4, Loss: 1.2155
+Fine-tuning (Classification) Epoch 5, Loss: 0.7095
+Classification result: 1 (Positive)
+Fine-tuning (Entailment) Epoch 1, Loss: 3.8001
+Fine-tuning (Entailment) Epoch 2, Loss: 3.0213
+Fine-tuning (Entailment) Epoch 3, Loss: 2.7479
+Fine-tuning (Entailment) Epoch 4, Loss: 1.5472
+Fine-tuning (Entailment) Epoch 5, Loss: 1.8183
+Entailment result: 0 (Contradiction)
