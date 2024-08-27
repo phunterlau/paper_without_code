@@ -152,7 +152,7 @@ class ReplayBuffer:
         return random.sample(self.buffer, min(batch_size, len(self.buffer)))
 
 class AgentQ:
-    def __init__(self, env: WebShop, mcts_simulations: int = 2, mcts_max_depth: int = 2, max_steps_per_episode: int = 100):
+    def __init__(self, env: WebShop, mcts_simulations: int = 10, mcts_max_depth: int = 5, max_steps_per_episode: int = 100):
         self.env = env
         self.mcts = MCTS(env, num_simulations=mcts_simulations, max_depth=mcts_max_depth)
         self.dpo = DPO()
@@ -422,7 +422,7 @@ class MCTSNode:
         return self.value() + c * np.sqrt(np.log(self.parent.visits) / self.visits)
 
 class MCTS:
-    def __init__(self, env: WebShop, num_simulations: int = 5, max_depth: int = 3):
+    def __init__(self, env: WebShop, num_simulations: int = 10, max_depth: int = 5):
         self.env = env
         self.num_simulations = num_simulations
         self.max_depth = max_depth
@@ -620,7 +620,7 @@ def main():
     agent = AgentQ(env)
 
     print("Training Agent Q")
-    agent.train(num_episodes=1)  # You can adjust the number of episodes as needed
+    agent.train(num_episodes=5)  # You can adjust the number of episodes as needed
 
     print("\nTesting trained Agent Q")
     observation = env.get_observation()
