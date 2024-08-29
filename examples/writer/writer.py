@@ -1,13 +1,35 @@
 import os
 import openai
-from typing import List, Tuple
+from typing import List, Tuple, Dict
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
+class KVCache:
+    def __init__(self, max_size: int = 4096):
+        self.cache: Dict[int, str] = {}
+        self.max_size = max_size
+
+    def add(self, key: int, value: str):
+        if len(self.cache) >= self.max_size:
+            # Simulate eviction of oldest entry
+            oldest_key = min(self.cache.keys())
+            del self.cache[oldest_key]
+        self.cache[key] = value
+
+    def get(self, key: int) -> str:
+        return self.cache.get(key, "")
+
+    def clear(self):
+        self.cache.clear()
+
+    def __len__(self):
+        return len(self.cache)
+
 class WiMProcessor:
-    def __init__(self, segment_size: int = 1500):  # Increased for better context
+    def __init__(self, segment_size: int = 1500):
         self.segment_size = segment_size
         self.client = openai.OpenAI()
+        self.kv_cache = KVCache()
 
     def split_context(self, context: str) -> List[str]:
         print(f"Splitting context into segments of {self.segment_size} characters...")
@@ -22,15 +44,21 @@ class WiMProcessor:
                 current_length = len(word)
             else:
                 current_segment.append(word)
-                current_length += len(word) + 1  # +1 for space
+                current_length += len(word) + 1
         if current_segment:
             segments.append(" ".join(current_segment))
         print(f"Context split into {len(segments)} segments")
         return segments
 
-    def generate_margin(self, segment: str, query: str) -> Tuple[str, bool]:
-        print(f"\nGenerating margin for segment (length: {len(segment)})...")
+    def generate_margin(self, segment: str, query: str, segment_id: int) -> Tuple[str, bool]:
+        print(f"\nGenerating margin for segment {segment_id} (length: {len(segment)})...")
+        print(f"KV Cache size before processing: {len(self.kv_cache)}")
         
+        cached_value = self.kv_cache.get(segment_id)
+        if cached_value:
+            print(f"KV Cache hit for segment {segment_id}")
+            return cached_value, True
+
         prompt = f"""
         Extract information relevant to the query: {query}
 
@@ -46,7 +74,7 @@ class WiMProcessor:
         """
 
         response = self.client.chat.completions.create(
-            model="gpt-4o-mini",
+            model="gpt-4",
             messages=[{"role": "user", "content": prompt}],
             temperature=0
         )
@@ -56,9 +84,11 @@ class WiMProcessor:
         
         if is_relevant:
             print("Relevant margin generated")
+            self.kv_cache.add(segment_id, margin.split("#", 1)[1])
         else:
             print("Irrelevant or no margin generated")
         
+        print(f"KV Cache size after processing: {len(self.kv_cache)}")
         return margin.split("#", 1)[1] if is_relevant else "", is_relevant
 
     def process_query(self, context: str, query: str) -> str:
@@ -68,11 +98,12 @@ class WiMProcessor:
 
         for i, segment in enumerate(segments):
             print(f"\nProcessing segment {i+1}/{len(segments)}")
-            margin, is_relevant = self.generate_margin(segment, query)
+            margin, is_relevant = self.generate_margin(segment, query, i)
             if is_relevant:
                 relevant_margins.append(f"Segment {i+1}: {margin}")
 
         print(f"\nAggregated {len(relevant_margins)} relevant margins")
+        print(f"Final KV Cache size: {len(self.kv_cache)}")
 
         print("\nGenerating final answer...")
         final_prompt = f"""
@@ -87,10 +118,13 @@ class WiMProcessor:
         """
 
         response = self.client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4o-mini",
             messages=[{"role": "user", "content": final_prompt}],
             temperature=0
         )
+
+        self.kv_cache.clear()
+        print("KV Cache cleared after query processing")
 
         return response.choices[0].message.content.strip()
 
@@ -117,3 +151,9 @@ if __name__ == "__main__":
     query_large = "What are the key similarities and differences between the architectural achievements of Ancient Egypt, Greece, and Rome?"
     result_large = wim.process_query(context_large, query_large)
     print(f"\nFinal Answer: {result_large}\n")
+
+    # Second query to demonstrate KV cache effect
+    print("\n=== Second query to demonstrate KV cache effect ===")
+    query_large_2 = "How did the political systems of Ancient Egypt, Greece, and Rome influence their architecture?"
+    result_large_2 = wim.process_query(context_large, query_large_2)
+    print(f"\nFinal Answer: {result_large_2}\n")
