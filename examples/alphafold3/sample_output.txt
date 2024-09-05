@@ -1,0 +1,48 @@
+python alphafold3.py
+Number of residues: 5
+MSA shape: torch.Size([6, 46])
+Coordinates shape: torch.Size([1, 5, 3])
+Training CNN Model:
+Epoch 100/1000, Loss: 1.7361
+Epoch 200/1000, Loss: 4.6436
+Epoch 300/1000, Loss: 7.8238
+Epoch 400/1000, Loss: 0.4287
+Epoch 500/1000, Loss: 1.3439
+Epoch 600/1000, Loss: 4.8347
+Epoch 700/1000, Loss: 0.4317
+Epoch 800/1000, Loss: 4.8211
+Epoch 900/1000, Loss: 1.4354
+Epoch 1000/1000, Loss: 2.5909
+
+Training Simple Attention Model:
+Epoch 100/1000, Loss: 0.0094
+Epoch 200/1000, Loss: 0.5471
+Epoch 300/1000, Loss: 0.1845
+Epoch 400/1000, Loss: 0.0613
+Epoch 500/1000, Loss: 0.0561
+Epoch 600/1000, Loss: 0.2745
+Epoch 700/1000, Loss: 0.0047
+Epoch 800/1000, Loss: 0.0758
+Epoch 900/1000, Loss: 0.0702
+Epoch 1000/1000, Loss: 0.0838
+
+Training AlphaFold-inspired Model:
+Epoch 100/1000, Loss: 4.0024
+Epoch 200/1000, Loss: 0.8486
+Epoch 300/1000, Loss: 0.1274
+Epoch 400/1000, Loss: 0.6209
+Epoch 500/1000, Loss: 0.0596
+Epoch 600/1000, Loss: 0.2545
+Epoch 700/1000, Loss: 0.0839
+Epoch 800/1000, Loss: 0.7657
+Epoch 900/1000, Loss: 0.3236
+Epoch 1000/1000, Loss: 0.1727
+
+Learning curves have been saved to 'learning_curves.png'
+
+Final MSE:
+CNN Model: 1.2757
+Simple Attention Model: 0.0224
+AlphaFold-inspired Model: 0.0251
+
+Note: The AlphaFold-inspired model also provides confidence scores for its predictions.
