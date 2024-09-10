@@ -162,6 +162,7 @@ def generate_mind_map(paper_content, first_pass_summary, second_pass_summary, th
     Second Pass Summary: {second_pass_summary}
     Third Pass Summary: {third_pass_summary}
     High-Level Summary: {high_level_summary}
+    Paper full content: {paper_content}
 
     Generate the Mermaid mind map diagram:
     """
@@ -231,12 +232,64 @@ def generate_highlights_explained(paper_content, first_pass_summary, second_pass
     Second Pass Summary: {second_pass_summary}
     Third Pass Summary: {third_pass_summary}
     Additional Information: {human_prompt}
+    Paper full content: {paper_content}
 
     Generate the Highlights Explained section in Markdown format, and the top level is heading 2 (##) and subheadings are heading 3 (###) and going down:
     """
     return gpt4_analyze(prompt)
 
-def summarize_paper(paper_content, human_prompt):
+def generate_markmap_mindmap(paper_content, first_pass_summary, second_pass_summary, third_pass_summary, high_level_summary):
+    prompt = f"""
+    Create a hierarchical mind map using Markdown syntax based on the three-pass analysis and high-level summary of the paper. Follow these instructions exactly:
+
+    1. Start with the paper's title as the root node at the top level (#)
+    2. Use the following structure as the main branches if available, add other structures if needed(##):
+       - Research Question/Objective
+       - Methodology
+       - Key Findings/Contributions
+       - Theoretical Framework
+       - Results and Discussion
+       - Implications
+       - Limitations
+       - Future Research Directions
+    3. Under each main branch, add relevant sub-topics as third-level headings (###) and fourth-level headings (####) if necessary
+    4. Use bullet points to add brief explanations or key points under each heading
+    5. Ensure the structure is detailed and reflects the content of the paper
+    6. Use concise labels for each node, but if the text is long, it's okay - it will be wrapped automatically
+    7. Do not use any code blocks or backticks in the output
+
+    First Pass Summary: {first_pass_summary}
+    Second Pass Summary: {second_pass_summary}
+    Third Pass Summary: {third_pass_summary}
+    High-Level Summary: {high_level_summary}
+    Paper full content: {paper_content}
+
+    Generate the Markmap-compatible Markdown structure:
+    """
+    markmap_content = gpt4_analyze(prompt)
+    
+    # Add YAML front matter
+    yaml_front_matter = """---
+title: Paper Mindmap
+markmap:
+  colorFreezeLevel: 5
+  initialExpandLevel: -1
+  maxWidth: 300
+---
+
+"""
+    return yaml_front_matter + markmap_content
+
+def save_markmap_to_file(file_path, markmap_content):
+    base_name = os.path.splitext(os.path.basename(file_path))[0]
+    output_file = f"{base_name}-markmap.md"
+    
+    with open(output_file, 'w') as f:
+        f.write(markmap_content)
+    
+    print(f"\nMarkmap saved to {output_file}")
+
+def summarize_paper(file_path, paper_content, human_prompt):
     print("Performing first pass...")
     first_pass_summary = first_pass(paper_content)
     print("\nFirst pass summary:")
@@ -262,9 +315,16 @@ def summarize_paper(paper_content, human_prompt):
     print("\nInterpretive summary:")
     print(interpretive_summary)
 
-    print("\nGenerating mind map...")
-    mind_map = generate_mind_map(paper_content, first_pass_summary, second_pass_summary, third_pass_summary, highlights_explained)
-    print("\nMind map generated")
+    print("\nGenerating Mermaid mind map...")
+    mermaid_mind_map = generate_mind_map(paper_content, first_pass_summary, second_pass_summary, third_pass_summary, highlights_explained)
+    print("\nMermaid mind map generated")
+
+    print("\nGenerating Markmap mind map...")
+    markmap_mind_map = generate_markmap_mindmap(paper_content, first_pass_summary, second_pass_summary, third_pass_summary, highlights_explained)
+    print("\nMarkmap mind map generated")
+
+    # Save Markmap to a separate file
+    save_markmap_to_file(file_path, markmap_mind_map)
 
     return {
         "first_pass": first_pass_summary,
@@ -272,7 +332,8 @@ def summarize_paper(paper_content, human_prompt):
         "third_pass": third_pass_summary,
         "highlights_explained": highlights_explained,
         "interpretive_summary": interpretive_summary,
-        "mind_map": mind_map
+        "mermaid_mind_map": mermaid_mind_map,
+        "markmap_mind_map": markmap_mind_map
     }
 
 def save_summary_to_markdown(file_path, summary):
@@ -285,9 +346,9 @@ def save_summary_to_markdown(file_path, summary):
         f.write(f"{summary['interpretive_summary']}\n\n")
         f.write("## Highlights Explained\n\n")
         f.write(f"{summary['highlights_explained']}\n\n")
-        f.write("## Mind Map\n\n")
+        f.write("## Mermaid Mind Map\n\n")
         f.write("```mermaid\n")
-        f.write(f"{summary['mind_map']}\n")
+        f.write(f"{summary['mermaid_mind_map']}\n")
         f.write("```\n\n")
         f.write("## First Pass\n\n")
         f.write(f"{summary['first_pass']}\n\n")
@@ -297,7 +358,6 @@ def save_summary_to_markdown(file_path, summary):
         f.write(f"{summary['third_pass']}\n")
     
     print(f"\nSummary saved to {output_file}")
-
 
 def main():
     parser = argparse.ArgumentParser(description="Summarize a scientific paper using the three-pass approach.")
@@ -311,7 +371,7 @@ def main():
     try:
         paper_content = parse_pdf(file_path)
         if paper_content:
-            summary = summarize_paper(paper_content, human_prompt)
+            summary = summarize_paper(file_path, paper_content, human_prompt)
             save_summary_to_markdown(file_path, summary)
             print("\nComplete summary generated and saved successfully.")
         else:
