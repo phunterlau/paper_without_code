@@ -1,0 +1,78 @@
+Solving Einstein's Riddle using Logic-of-Thought approach:
+source credit: https://edcraft.io/blog/all-articles/5-zebra-puzzles-for-kids
+
+The Simpsons are preparing a concert show with tricks, a guitar song, and one family member’s own poem.
+A person who wrote the poem will give a bread machine as a present and buy irises.
+Mummy will buy tulips.
+Melanie has learned to bake cinnamon buns and remembered guitar chords for Granny’s birthday.
+The trickster has prepared a notebook for recipes and a fruit salad.
+Melanie knows that Granny likes daisies.
+A person who will give a rocking chair will also prepare homemade candies for Granny.
+Bill has a special deck of cards and a box with a double bottom.
+Mummy and Melanie have had rehearsals for two for a week.
+Daddy will prepare orange juice.
+Granny will also be given a bouquet of roses and a ticket to the theatre play.
+
+Who will give a theatre ticket and who will buy roses?
+
+
+Applying Logic-of-Thought...
+{'extended_expressions': [{'expression': 'P2 -> ((bread machine AND irises) AND (P2 leads to happiness))', 'description': 'If the person wrote the poem, then they will give a bread machine and buy irises, leading to happiness for the recipient.'}, {'expression': 'P11 -> ((roses AND theatre ticket) AND (P11 secures a joy-filled evening))', 'description': 'Granny will receive both a bouquet of roses and a theatre ticket, ensuring a joy-filled evening for her.'}, {'expression': 'P1 -> ((tricks AND guitar song AND poem) AND (P1 is a memorable concert))', 'description': 'The concert show consists of tricks, a guitar song, and a family member’s poem, making it a memorable concert experience.'}, {'expression': 'P7 -> ((rocking chair AND homemade candies) AND (P7 brings nostalgia))', 'description': 'The person giving Granny a rocking chair will also prepare homemade candies, bringing a sense of nostalgia as well.'}, {'expression': 'P2 AND P11 -> (gift exchange is thoughtful)', 'description': 'If both the poem is written and Granny receives her gifts, it indicates that the gift exchange is thoughtful.'}, {'expression': 'P1 AND P7 -> (concert and treats enhance family bonding)', 'description': "The combination of tricks, a guitar song, a family member's poem, along with homemade candies, will enhance family bonding during the celebration."}, {'expression': 'P11 OR P2 -> (both occasions are celebratory)', 'description': 'Whether Granny receives roses and a theatre ticket or the person writes the poem, both occasions contribute to celebrations.'}]}
+
+Logic-of-Thought Output:
+Propositions: [LogicalProposition(symbol='P1', description="The Simpsons are preparing a concert show with tricks, a guitar song, and a family member's poem."), LogicalProposition(symbol='P2', description='The person who wrote the poem will give a bread machine as a present and buy irises.'), LogicalProposition(symbol='P3', description='Mummy will buy tulips.'), LogicalProposition(symbol='P4', description="Melanie learned to bake cinnamon buns and remembered guitar chords for Granny's birthday."), LogicalProposition(symbol='P5', description='The trickster has prepared a notebook for recipes and a fruit salad.'), LogicalProposition(symbol='P6', description='Melanie knows that Granny likes daisies.'), LogicalProposition(symbol='P7', description='The person who will give a rocking chair will prepare homemade candies for Granny.'), LogicalProposition(symbol='P8', description='Bill has a special deck of cards and a box with a double bottom.'), LogicalProposition(symbol='P9', description='Mummy and Melanie have had rehearsals for two for a week.'), LogicalProposition(symbol='P10', description='Daddy will prepare orange juice.'), LogicalProposition(symbol='P11', description='Granny will be given a bouquet of roses and a ticket to the theatre play.')]
+Expressions: [LogicalExpression(expression='P2 -> (bread machine AND irises)', description='If the person wrote the poem, then they will give a bread machine and buy irises.'), LogicalExpression(expression='P11 -> (roses AND theatre ticket)', description='Granny will receive both a bouquet of roses and a theatre ticket.'), LogicalExpression(expression='P1 -> (tricks AND guitar song AND poem)', description='The concert show consists of tricks, a guitar song, and a family member’s poem.'), LogicalExpression(expression='P7 -> (rocking chair AND homemade candies)', description='The person giving Granny a rocking chair will also prepare homemade candies.')]
+Extended Expressions: [LogicalExpression(expression='P2 -> ((bread machine AND irises) AND (P2 leads to happiness))', description='If the person wrote the poem, then they will give a bread machine and buy irises, leading to happiness for the recipient.'), LogicalExpression(expression='P11 -> ((roses AND theatre ticket) AND (P11 secures a joy-filled evening))', description='Granny will receive both a bouquet of roses and a theatre ticket, ensuring a joy-filled evening for her.'), LogicalExpression(expression='P1 -> ((tricks AND guitar song AND poem) AND (P1 is a memorable concert))', description='The concert show consists of tricks, a guitar song, and a family member’s poem, making it a memorable concert experience.'), LogicalExpression(expression='P7 -> ((rocking chair AND homemade candies) AND (P7 brings nostalgia))', description='The person giving Granny a rocking chair will also prepare homemade candies, bringing a sense of nostalgia as well.'), LogicalExpression(expression='P2 AND P11 -> (gift exchange is thoughtful)', description='If both the poem is written and Granny receives her gifts, it indicates that the gift exchange is thoughtful.'), LogicalExpression(expression='P1 AND P7 -> (concert and treats enhance family bonding)', description="The combination of tricks, a guitar song, a family member's poem, along with homemade candies, will enhance family bonding during the celebration."), LogicalExpression(expression='P11 OR P2 -> (both occasions are celebratory)', description='Whether Granny receives roses and a theatre ticket or the person writes the poem, both occasions contribute to celebrations.')]
+
+Logical Reasoning Process:
+The logical expressions can be interpreted as a series of conditional statements and relationships that highlight various gift-giving scenarios and their resulting emotional impacts. 
+
+1. The first expression states that if the poem is written (P2), then it leads to actions where a bread machine and irises are given, resulting in happiness for the recipient.
+2. The second expression illustrates that if Granny receives a theatre ticket and roses (P11), it guarantees a joyful evening. 
+3. The third expression asserts that if the person performs tricks, a guitar song, and a family member's poem at the concert (P1), this combination creates a memorable experience for attendees. 
+4. The fourth expression indicates that giving Granny a rocking chair along with homemade candies (P7) will evoke a sense of nostalgia.
+5. The fifth expression connects the actions of writing the poem and Granny receiving her gifts, suggesting that this thoughtful exchange indicates the consideration behind the gifts.
+6. The sixth expression shows that the combination of the concert elements and homemade candies contributes positively to family bonding during their celebration.
+7. Finally, the last expression notes that whether Granny receives gifts or the poem is written, both scenarios result in celebratory occasions. 
+
+Overall, these expressions collectively describe a series of thoughtful gestures and their intended emotional outcomes, illustrating how different actions and gifts foster happiness, nostalgia, and celebration within familial relationships.
+
+Solution:
+To solve the puzzle, we will analyze the available clues systematically.
+
+### Clues Breakdown
+1. **The person who wrote the poem will give a bread machine and buy irises.**
+2. **Mummy will buy tulips.**
+3. **Melanie has learned to bake cinnamon buns and remembered guitar chords for Granny’s birthday.**
+4. **The trickster has prepared a notebook for recipes and a fruit salad.**
+5. **Melanie knows that Granny likes daisies.**
+6. **The person who will give a rocking chair will prepare homemade candies for Granny.**
+7. **Bill has a special deck of cards and a box with a double bottom.**
+8. **Mummy and Melanie have had rehearsals for two for a week.**
+9. **Daddy will prepare orange juice.**
+10. **Granny will also be given a bouquet of roses and a ticket to the theatre play.**
+
+### Step-by-Step Reasoning
+
+1. **Identifying gift givers:** 
+   - We know **Mummy** is buying **tulips**, so she is **not** involved in giving the theatre ticket or roses.
+   - **Daddy will prepare orange juice**, so he is not involved in giving gifts.
+   - This leaves **Melanie**, **Granny**, and **Bill** as possible givers of the theatre ticket and roses.
+
+2. **Understanding who gives what:**
+   - The person who gives the **rocking chair** is also preparing **homemade candies** for Granny. This does not give information about the theatre ticket or roses.
+   - It’s clear that *the theatre ticket and roses might be given by a different family member since the first clue ("the person who will give a rocking chair") doesn't mention either of these gifts.*
+
+3. **Linking to Granny's gifts:**
+   - Granny receives **both a bouquet of roses and a ticket to the theatre play**. Therefore, whoever gives these gifts must be a family member of Granny.
+   - Since Mummy is giving tulips and Daddy is preparing juice, they are excluded from giving the theatre ticket and roses.
+
+4. **Who is left?**
+   - The only plausible gift givers remaining are **Melanie** and **Bill**.
+   - Given the clues about Melanie preparing for Granny’s birthday and her knowledge of Granny's favorite flowers (daisies), it seems more fitting that **Bill is likely to give a theatre ticket or roses.**
+  
+5. **Final conclusions:**
+   - Since Granny can receive a mix of roses and a ticket with established familiarity to the family, we can conclude that **Bill** gives the **theatre ticket** and **Melanie** gives **roses** to ensure a harmonious memory of the celebrations.
+
+### Final Answer
+**Bill will give a theatre ticket, and Melanie will buy roses.**
