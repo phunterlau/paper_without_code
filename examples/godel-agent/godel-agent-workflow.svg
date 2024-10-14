@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+  </defs>
+  <style>
+    .box { fill: #f0f8ff; stroke: #4682b4; stroke-width: 2; }
+    .arrow { stroke: #333; stroke-width: 2; marker-end: url(#arrowhead); }
+    text { font-family: Arial, sans-serif; font-size: 14px; }
+    .title { font-size: 24px; font-weight: bold; }
+    .subtitle { font-size: 18px; font-style: italic; }
+  </style>
+
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" class="title">Gödel Agent XGBoost AutoML Workflow</text>
+  <text x="400" y="60" text-anchor="middle" class="subtitle">Self-Referential Framework for Recursive Self-Improvement</text>
+
+  <!-- Main Components -->
+  <rect x="50" y="100" width="200" height="80" rx="10" class="box" />
+  <text x="150" y="145" text-anchor="middle">AutoMLGodelAgentFramework</text>
+
+  <rect x="300" y="100" width="200" height="80" rx="10" class="box" />
+  <text x="400" y="145" text-anchor="middle">XGBoostAutoMLAgent</text>
+
+  <rect x="550" y="100" width="200" height="80" rx="10" class="box" />
+  <text x="650" y="145" text-anchor="middle">Large Language Model</text>
+
+  <!-- Workflow Steps -->
+  <rect x="50" y="250" width="150" height="60" rx="10" class="box" />
+  <text x="125" y="285" text-anchor="middle">Initialize Agent</text>
+
+  <rect x="250" y="250" width="150" height="60" rx="10" class="box" />
+  <text x="325" y="285" text-anchor="middle">Decide Actions</text>
+
+  <rect x="450" y="250" width="150" height="60" rx="10" class="box" />
+  <text x="525" y="285" text-anchor="middle">Execute Actions</text>
+
+  <rect x="650" y="250" width="150" height="60" rx="10" class="box" />
+  <text x="725" y="285" text-anchor="middle">Train &amp; Evaluate</text>
+
+  <rect x="250" y="350" width="150" height="60" rx="10" class="box" />
+  <text x="325" y="385" text-anchor="middle">Update Hyperparameters</text>
+
+  <rect x="450" y="350" width="150" height="60" rx="10" class="box" />
+  <text x="525" y="385" text-anchor="middle">Feature Engineering</text>
+
+  <rect x="250" y="450" width="150" height="60" rx="10" class="box" />
+  <text x="325" y="485" text-anchor="middle">Feature Selection</text>
+
+  <rect x="450" y="450" width="150" height="60" rx="10" class="box" />
+  <text x="525" y="485" text-anchor="middle">Update Policy</text>
+
+  <!-- Arrows -->
+  <line x1="150" y1="180" x2="150" y2="240" class="arrow" />
+  <line x1="200" y1="280" x2="240" y2="280" class="arrow" />
+  <line x1="400" y1="280" x2="440" y2="280" class="arrow" />
+  <line x1="600" y1="280" x2="640" y2="280" class="arrow" />
+  
+  <path d="M725 310 Q725 420 410 420 Q95 420 95 320" class="arrow" fill="none" />
+  
+  <line x1="325" y1="310" x2="325" y2="340" class="arrow" />
+  <line x1="525" y1="310" x2="525" y2="340" class="arrow" />
+  <line x1="325" y1="410" x2="325" y2="440" class="arrow" />
+  <line x1="525" y1="410" x2="525" y2="440" class="arrow" />
+
+  <!-- LLM Interactions -->
+  <line x1="400" y1="180" x2="400" y2="220" class="arrow" stroke-dasharray="5,5" />
+  <line x1="650" y1="180" x2="650" y2="220" class="arrow" stroke-dasharray="5,5" />
+
+  <!-- Legend -->
+  <rect x="50" y="540" width="20" height="20" class="box" />
+  <text x="80" y="555">Component</text>
+  
+  <line x1="200" y1="550" x2="240" y2="550" class="arrow" />
+  <text x="250" y="555">Workflow</text>
+  
+  <line x1="350" y1="550" x2="390" y2="550" class="arrow" stroke-dasharray="5,5" />
+  <text x="400" y="555">LLM Interaction</text>
+</svg>
