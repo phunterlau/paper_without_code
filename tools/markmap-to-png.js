@@ -12,6 +12,15 @@ async function renderMarkmap(markdown, outFile) {
             jsonOptions: {
                 duration: 0,
                 maxInitialScale: 5,
+                // Essential styling options
+                maxWidth: 200,               // Controls text wrapping width (0 for no limit)
+                //color: '#2c3e50',           // Text color
+                //backgroundColor: '#ffffff',  // Background color
+                //fontSize: 16,               // Font size for nodes
+                //lineHeight: 1.4,           // Line height for better readability
+                //spacingHorizontal: 100,    // Horizontal spacing between nodes
+                //spacingVertical: 10,       // Vertical spacing between nodes
+                //paddingX: 8,              // Horizontal padding within nodes
             },
         }) +
         `
@@ -20,6 +29,8 @@ body,
 #mindmap {
   width: 2400px;
   height: 1800px;
+  margin: 0;
+  background-color: #ffffff;
 }
 </style>
 `;
