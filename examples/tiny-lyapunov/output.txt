@@ -1,0 +1,99 @@
+Testing model on examples...
+
+Testing on backward generated examples:
+decoded tokens: ['x1']
+
+Test 1:
+System: ['-1.6662253921886785*x0 - 0.9177711459326866*x1 + -1*x0*x0 + -3*x0*x0', '-3.3387369604886064*x1 - 0.9177711459326866*x0 + 4*x0*x0 + -5*x1*x0']
+True Lyapunov: 1.6662253921886785*x0**2 + 1.8355422918653732*x0*x1 + 3.3387369604886064*x1**2
+Predicted: x1
+Prediction missing required quadratic terms
+Prediction is invalid.
+decoded tokens: ['x1']
+
+Test 2:
+System: ['-3.5487409195571096*x0 - 1.2667667179608204*x1', '-1.643776178119421*x1 - 1.2667667179608204*x0']
+True Lyapunov: 3.5487409195571096*x0**2 + 2.533533435921641*x0*x1 + 1.643776178119421*x1**2
+Predicted: x1
+Prediction missing required quadratic terms
+Prediction is invalid.
+decoded tokens: ['x1']
+
+Test 3:
+System: ['-1.4351621570606259*x0 - -0.038890635421716585*x1', '-1.5112756042566162*x1 - -0.038890635421716585*x0 + 5*x0*x0 + 2*x1*x0']
+True Lyapunov: 1.4351621570606259*x0**2 + -0.07778127084343317*x0*x1 + 1.5112756042566162*x1**2
+Predicted: x1
+Prediction missing required quadratic terms
+Prediction is invalid.
+decoded tokens: ['x1']
+
+Test 4:
+System: ['-4.033887269782854*x0 - 0.5069581520476288*x1 + -3*x1*x0 + -1*x1*x1', '-4.976808560137721*x1 - 0.5069581520476288*x0']
+True Lyapunov: 4.033887269782854*x0**2 + 1.0139163040952577*x0*x1 + 4.976808560137721*x1**2
+Predicted: x1
+Prediction missing required quadratic terms
+Prediction is invalid.
+decoded tokens: ['x1']
+
+Test 5:
+System: ['-2.8503346000440337*x0 - 0.9641262848255869*x1', '-3.093353130848609*x1 - 0.9641262848255869*x0 + 1*x0*x0']
+True Lyapunov: 2.8503346000440337*x0**2 + 1.9282525696511739*x0*x1 + 3.093353130848609*x1**2
+Predicted: x1
+Prediction missing required quadratic terms
+Prediction is invalid.
+
+Testing on forward generated examples:
+Attempt 1/5 to find Lyapunov function...
+Found valid Lyapunov function!
+decoded tokens: ['x1']
+
+Test 1:
+System: ['-1.6702829869589426*x0 + -0.060308174263711406*x1', '-0.06030817426371141*x0 + -1.1915859314561326*x1 + 0.06949887326949197*x1']
+True Lyapunov: 2.6414466989708174*x0**2 + -0.5144469088656349*x0*x1 + 1.1821278925333758*x1**2
+Predicted: x1
+Prediction missing required quadratic terms
+Prediction is invalid.
+Attempt 1/5 to find Lyapunov function...
+Found valid Lyapunov function!
+decoded tokens: ['x1']
+
+Test 2:
+System: ['-1.1603272952770243*x0 + 0.0060060969562734795*x1 + 0.010408126254645406*x1**3', '0.006006096956273478*x0 + -1.5262509851006136*x1']
+True Lyapunov: 4.651083943017548*x0**2 + -1.3415441882944348*x0*x1 + 6.722443101825708*x1**2
+Predicted: x1
+Prediction missing required quadratic terms
+Prediction is invalid.
+Attempt 1/5 to find Lyapunov function...
+Found valid Lyapunov function!
+decoded tokens: ['x1']
+
+Test 3:
+System: ['-1.9473946630189671*x0 + 0.04458500647322988*x1 + -0.08608897023525182*x0**2 + 0.07106354420302938*x1**2', '0.044585006473229875*x0 + -1.669681513669541*x1 + 0.027136888852880042*x1**2']
+True Lyapunov: 4.415164572729823*x0**2 + 1.154708017420908*x0*x1 + 3.6526323049438627*x1**2
+Predicted: x1
+Prediction missing required quadratic terms
+Prediction is invalid.
+Attempt 1/5 to find Lyapunov function...
+Found valid Lyapunov function!
+decoded tokens: ['x1']
+
+Test 4:
+System: ['-1.2408277688225422*x0 + -0.1529287677929055*x1', '-0.1529287677929056*x0 + -0.994618120445901*x1 + -0.04660443559017733*x0**3 + 0.026995657639412057*x0**2*x1']
+True Lyapunov: 3.132316576826545*x0**2 + 2.4392916046608337*x0*x1 + 2.3279654637963603*x1**2
+Predicted: x1
+Prediction missing required quadratic terms
+Prediction is invalid.
+Attempt 1/5 to find Lyapunov function...
+Found valid Lyapunov function!
+decoded tokens: ['x1']
+
+Test 5:
+System: ['-1.491766573580731*x0 + -0.13118666661316458*x1', '-0.13118666661316458*x0 + -1.737835755473996*x1 + -0.03514345311693563*x0']
+True Lyapunov: 2.4213081506257486*x0**2 + 2.0594310371827382*x0*x1 + 4.602389773207717*x1**2
+Predicted: x1
+Prediction missing required quadratic terms
+Prediction is invalid.
+
+Test Results:
+Backward generation: 0/5 (0.0%)
+Forward generation: 0/5 (0.0%)
