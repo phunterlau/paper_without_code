@@ -1,0 +1,524 @@
+Testing CoALA Pattern Solver with Memory Enhancement
+
+
+================================================================================
+Test Case 1: [2, 4, 6, 8, 10, 12]
+================================================================================
+
+Analysis Results:
+Pattern type: Arithmetic Sequence
+Formula: a_n = 2n
+Confidence: 0.900
+
+Component Patterns:
+- Type: Constant First Difference
+  Formula: d = 2
+- Type: Modulo Pattern Variation
+  Formula: Alternating pattern seen in modulo 4 results
+
+Predicted next terms: [14, 16, 18]
+
+Explanation: An arithmetic sequence where each term increases by a constant difference. The given sequence's first differences are constant, indicating an arithmetic pattern. The general formula for an arithmetic sequence is a_n = a_1 + (n-1)d where a_1 is the first term and d is the common difference.
+
+Memory Statistics:
+- Patterns in episodic memory: 1
+- Successful patterns stored: 0
+
+Prediction Analysis:
+Predicted next 3 terms: [14, 16, 18]
+Actual next 3 terms: [14, 16, 18]
+✓ Prediction matches exactly!
+
+================================================================================
+Test Case 2: [2, 4, 8, 16, 32, 64]
+================================================================================
+
+Found similar patterns in memory:
+- Sequence: [2, 4, 6, 8, 10, 12]
+  Pattern type: Arithmetic Sequence
+  Formula: a_n = 2n
+  Similarity score: 0.781
+
+Analysis Results:
+Pattern type: Geometric Sequence
+Formula: a_n = 2^n
+Confidence: 1.000
+
+Component Patterns:
+- Type: Position-based Pattern
+  Formula: a_n = 2^{n-1}
+- Type: Position-based Pattern
+  Formula: a_n = 2^n
+
+Predicted next terms: [128, 256, 512]
+
+Explanation: The sequence [2, 4, 8, 16, 32, 64] is a geometric sequence where each term is obtained by multiplying the previous term by a fixed factor, in this case 2. The formula a_n = 2^n describes each term as an exponentiation of 2.
+
+Memory Statistics:
+- Patterns in episodic memory: 2
+- Successful patterns stored: 1
+
+Prediction Analysis:
+Predicted next 3 terms: [128, 256, 512]
+Actual next 3 terms: [128, 256, 512]
+✓ Prediction matches exactly!
+
+================================================================================
+Test Case 3: [1, 1, 2, 3, 5, 8, 13]
+================================================================================
+
+Found similar patterns in memory:
+- Sequence: [2, 4, 8, 16, 32, 64]
+  Pattern type: Geometric Sequence
+  Formula: a_n = 2^n
+  Similarity score: 0.724
+
+Analysis Results:
+Pattern type: Fibonacci Sequence
+Formula: a_n = a_{n-1} + a_{n-2}, a_0 = 1, a_1 = 1
+Confidence: 1.000
+
+Component Patterns:
+- Type: Arithmetic Transformation
+  Formula: First differences show arithmetic sequence: [0, 1, 1, 2, 3, 5]
+- Type: Arithmetic Transformation
+  Formula: Second differences aren't consistent, indicating a deeper non-linear pattern
+
+Predicted next terms: [21, 34, 55]
+
+Explanation: The sequence follows the Fibonacci pattern where each number is the sum of the two preceding ones starting from 1 and 1.
+
+Memory Statistics:
+- Patterns in episodic memory: 3
+- Successful patterns stored: 2
+
+Prediction Analysis:
+Predicted next 3 terms: [21, 34, 55]
+Actual next 3 terms: [21, 34, 55]
+✓ Prediction matches exactly!
+
+================================================================================
+Test Case 4: [2, 3, 8, 7, 32, 11, 128, 15, 512, 19]
+================================================================================
+
+Found similar patterns in memory:
+- Sequence: [2, 4, 6, 8, 10, 12]
+  Pattern type: Arithmetic Sequence
+  Formula: a_n = 2n
+  Similarity score: 0.859
+- Sequence: [2, 4, 8, 16, 32, 64]
+  Pattern type: Geometric Sequence
+  Formula: a_n = 2^n
+  Similarity score: 0.836
+- Sequence: [1, 1, 2, 3, 5, 8, 13]
+  Pattern type: Fibonacci Sequence
+  Formula: a_n = a_{n-1} + a_{n-2}, a_0 = 1, a_1 = 1
+  Similarity score: 0.824
+
+Analysis Results:
+Pattern type: Composite Periodic Sequence
+Formula: a_n = 2^{n/2} when n is even, a_n = 2n + 1 when n is odd
+Confidence: 0.986
+
+Component Patterns:
+- Type: Geometric Sequence
+  Formula: a_n = 2^{n/2} for even indices
+- Type: Arithmetic Sequence
+  Formula: a_n = 2n + 1 for odd indices
+
+Predicted next terms: [2048, 23, 8192]
+
+Explanation: The sequence is composed of two interwoven subsequences: a geometric sequence on even positions and an arithmetic sequence on odd positions. The geometric part follows a 2^n pattern, creating powers of 2 at even indices. The arithmetic part follows an increase by 4 formula on odd indices.
+
+Memory Statistics:
+- Patterns in episodic memory: 4
+- Successful patterns stored: 3
+
+Prediction Analysis:
+Predicted next 3 terms: [2048, 23, 8192]
+Actual next 3 terms: [2048, 23, 8192]
+✓ Prediction matches exactly!
+
+================================================================================
+Test Case 5: [1, 1, 3, 5, 11, 19, 37, 61, 115, 187]
+================================================================================
+
+Found similar patterns in memory:
+- Sequence: [2, 4, 6, 8, 10, 12]
+  Pattern type: Arithmetic Sequence
+  Formula: a_n = 2n
+  Similarity score: 0.842
+- Sequence: [2, 4, 8, 16, 32, 64]
+  Pattern type: Geometric Sequence
+  Formula: a_n = 2^n
+  Similarity score: 0.776
+- Sequence: [1, 1, 2, 3, 5, 8, 13]
+  Pattern type: Fibonacci Sequence
+  Formula: a_n = a_{n-1} + a_{n-2}, a_0 = 1, a_1 = 1
+  Similarity score: 0.830
+- Sequence: [2, 3, 8, 7, 32, 11, 128, 15, 512, 19]
+  Pattern type: Composite Periodic Sequence
+  Formula: a_n = 2^{n/2} when n is even, a_n = 2n + 1 when n is odd
+  Similarity score: 0.855
+
+Analysis Results:
+Pattern type: Hybrid Sequence
+Formula: a_{n} = 2a_{n-1} + (-1)^{n}a_{n-2}
+Confidence: 0.936
+
+Component Patterns:
+- Type: Modified Fibonacci-like
+  Formula: a_{n} = 2a_{n-1} when n is odd, a_{n} = 2a_{n-1} - a_{n-2} when n is even
+
+Predicted next terms: [313, 437, 781]
+
+Explanation: The sequence seems to be generated by dynamically interacting terms, switching behavior based on position. This hybrid character mixes aspects of arithmetic and a form of sequence resembling a modified Fibonacci rule, where terms are generated by a weighted sum involving the previous two terms.
+
+Memory Statistics:
+- Patterns in episodic memory: 5
+- Successful patterns stored: 4
+
+Prediction Analysis:
+Predicted next 3 terms: [313, 437, 781]
+Actual next 3 terms: [283, 499, 787]
+× Prediction differs from actual
+
+================================================================================
+Test Case 6: [2, 5, 11, 14, 20, 23, 29, 32, 38, 41]
+================================================================================
+
+Found similar patterns in memory:
+- Sequence: [2, 4, 6, 8, 10, 12]
+  Pattern type: Arithmetic Sequence
+  Formula: a_n = 2n
+  Similarity score: 0.761
+- Sequence: [2, 4, 8, 16, 32, 64]
+  Pattern type: Geometric Sequence
+  Formula: a_n = 2^n
+  Similarity score: 0.846
+- Sequence: [2, 3, 8, 7, 32, 11, 128, 15, 512, 19]
+  Pattern type: Composite Periodic Sequence
+  Formula: a_n = 2^{n/2} when n is even, a_n = 2n + 1 when n is odd
+  Similarity score: 0.873
+- Sequence: [1, 1, 3, 5, 11, 19, 37, 61, 115, 187]
+  Pattern type: Hybrid Sequence
+  Formula: a_{n} = 2a_{n-1} + (-1)^{n}a_{n-2}
+  Similarity score: 0.842
+
+Analysis Results:
+Pattern type: Alternating Arithmetic Sequence
+Formula: a_n = 3n + [0, 2] where [0, 2] alternates every term
+Confidence: 1.000
+
+Component Patterns:
+- Type: Arithmetic Sequence (odd-indexed)
+  Formula: a_n = 3n + 2
+- Type: Arithmetic Sequence (even-indexed)
+  Formula: a_n = 3n
+
+Predicted next terms: [44, 50, 53]
+
+Explanation: The sequence alternates between two arithmetic sub-sequences. The first differences alternate between 3 and 6, indicating an alternating pattern.
+
+Memory Statistics:
+- Patterns in episodic memory: 6
+- Successful patterns stored: 5
+
+Prediction Analysis:
+Predicted next 3 terms: [44, 50, 53]
+Actual next 3 terms: [47, 50, 56]
+× Prediction differs from actual
+
+================================================================================
+Test Case 7: [1, 4, 13, 40, 121, 364, 1093]
+================================================================================
+
+Found similar patterns in memory:
+- Sequence: [2, 4, 6, 8, 10, 12]
+  Pattern type: Arithmetic Sequence
+  Formula: a_n = 2n
+  Similarity score: 0.770
+- Sequence: [2, 4, 8, 16, 32, 64]
+  Pattern type: Geometric Sequence
+  Formula: a_n = 2^n
+  Similarity score: 0.808
+- Sequence: [1, 1, 2, 3, 5, 8, 13]
+  Pattern type: Fibonacci Sequence
+  Formula: a_n = a_{n-1} + a_{n-2}, a_0 = 1, a_1 = 1
+  Similarity score: 0.790
+- Sequence: [2, 3, 8, 7, 32, 11, 128, 15, 512, 19]
+  Pattern type: Composite Periodic Sequence
+  Formula: a_n = 2^{n/2} when n is even, a_n = 2n + 1 when n is odd
+  Similarity score: 0.811
+- Sequence: [1, 1, 3, 5, 11, 19, 37, 61, 115, 187]
+  Pattern type: Hybrid Sequence
+  Formula: a_{n} = 2a_{n-1} + (-1)^{n}a_{n-2}
+  Similarity score: 0.796
+- Sequence: [2, 5, 11, 14, 20, 23, 29, 32, 38, 41]
+  Pattern type: Alternating Arithmetic Sequence
+  Formula: a_n = 3n + [0, 2] where [0, 2] alternates every term
+  Similarity score: 0.799
+
+Analysis Results:
+Pattern type: Geometric Progression with Anomaly
+Formula: a_n = 3^{n-1} * a_1
+Confidence: 0.931
+
+Component Patterns:
+- Type: Polynomial Growth
+  Formula: a_n = a * b^n (approximate)
+
+Predicted next terms: [3280, 9841, 29524]
+
+Explanation: The sequence follows the pattern of multiplying the first term by 3 raised to the power of the term index minus one. However, starting from the second term (4), it appears each term increases by a factor of around 3, as shown by the first differences forming a geometric sequence. Adjustment might be required to recognize any anomalies such as a constant offset.
+
+Memory Statistics:
+- Patterns in episodic memory: 7
+- Successful patterns stored: 6
+
+Prediction Analysis:
+Predicted next 3 terms: [3280, 9841, 29524]
+Actual next 3 terms: [3280, 9841, 29524]
+✓ Prediction matches exactly!
+
+================================================================================
+Test Case 8: [4, 6, 13, 28, 61, 132, 283]
+================================================================================
+
+Found similar patterns in memory:
+- Sequence: [2, 4, 6, 8, 10, 12]
+  Pattern type: Arithmetic Sequence
+  Formula: a_n = 2n
+  Similarity score: 0.745
+- Sequence: [2, 4, 8, 16, 32, 64]
+  Pattern type: Geometric Sequence
+  Formula: a_n = 2^n
+  Similarity score: 0.851
+- Sequence: [1, 1, 2, 3, 5, 8, 13]
+  Pattern type: Fibonacci Sequence
+  Formula: a_n = a_{n-1} + a_{n-2}, a_0 = 1, a_1 = 1
+  Similarity score: 0.751
+- Sequence: [2, 3, 8, 7, 32, 11, 128, 15, 512, 19]
+  Pattern type: Composite Periodic Sequence
+  Formula: a_n = 2^{n/2} when n is even, a_n = 2n + 1 when n is odd
+  Similarity score: 0.830
+- Sequence: [1, 1, 3, 5, 11, 19, 37, 61, 115, 187]
+  Pattern type: Hybrid Sequence
+  Formula: a_{n} = 2a_{n-1} + (-1)^{n}a_{n-2}
+  Similarity score: 0.773
+- Sequence: [2, 5, 11, 14, 20, 23, 29, 32, 38, 41]
+  Pattern type: Alternating Arithmetic Sequence
+  Formula: a_n = 3n + [0, 2] where [0, 2] alternates every term
+  Similarity score: 0.786
+- Sequence: [1, 4, 13, 40, 121, 364, 1093]
+  Pattern type: Geometric Progression with Anomaly
+  Formula: a_n = 3^{n-1} * a_1
+  Similarity score: 0.854
+
+Analysis Results:
+Pattern type: Hybrid Sequence
+Formula: a_n = a_{n-1} + 2^n
+Confidence: 0.935
+
+Component Patterns:
+- Type: Arithmetic Progression
+  Formula: difference increases by a consistent geometric factor
+- Type: Exponential Growth Component
+  Formula: 2^n
+
+Predicted next terms: [604, 1285, 2732]
+
+Explanation: The sequence exhibits a consistent increase in complexity seen in hybrid sequences. Observing first differences [2, 7, 15, 33, 71, 151] suggests a combined arithmetic and geometric progression, fitting a model similar to previously successful hybrid sequences.
+
+Memory Statistics:
+- Patterns in episodic memory: 8
+- Successful patterns stored: 7
+
+Prediction Analysis:
+Predicted next 3 terms: [604, 1285, 2732]
+Actual next 3 terms: [556, 1031, 1830]
+× Prediction differs from actual
+
+================================================================================
+Test Case 9: [2, 3, 4, 7, 8, 11, 16, 15]
+================================================================================
+
+Found similar patterns in memory:
+- Sequence: [2, 4, 6, 8, 10, 12]
+  Pattern type: Arithmetic Sequence
+  Formula: a_n = 2n
+  Similarity score: 0.903
+- Sequence: [2, 4, 8, 16, 32, 64]
+  Pattern type: Geometric Sequence
+  Formula: a_n = 2^n
+  Similarity score: 0.763
+- Sequence: [1, 1, 2, 3, 5, 8, 13]
+  Pattern type: Fibonacci Sequence
+  Formula: a_n = a_{n-1} + a_{n-2}, a_0 = 1, a_1 = 1
+  Similarity score: 0.839
+- Sequence: [2, 3, 8, 7, 32, 11, 128, 15, 512, 19]
+  Pattern type: Composite Periodic Sequence
+  Formula: a_n = 2^{n/2} when n is even, a_n = 2n + 1 when n is odd
+  Similarity score: 0.863
+- Sequence: [1, 1, 3, 5, 11, 19, 37, 61, 115, 187]
+  Pattern type: Hybrid Sequence
+  Formula: a_{n} = 2a_{n-1} + (-1)^{n}a_{n-2}
+  Similarity score: 0.828
+- Sequence: [2, 5, 11, 14, 20, 23, 29, 32, 38, 41]
+  Pattern type: Alternating Arithmetic Sequence
+  Formula: a_n = 3n + [0, 2] where [0, 2] alternates every term
+  Similarity score: 0.727
+- Sequence: [1, 4, 13, 40, 121, 364, 1093]
+  Pattern type: Geometric Progression with Anomaly
+  Formula: a_n = 3^{n-1} * a_1
+  Similarity score: 0.793
+- Sequence: [4, 6, 13, 28, 61, 132, 283]
+  Pattern type: Hybrid Sequence
+  Formula: a_n = a_{n-1} + 2^n
+  Similarity score: 0.760
+
+Analysis Results:
+Pattern type: Composite Pattern
+Formula: a_n = 2^{(n/2)} \text{ when } n \text{ is even}, \ a_n = 2n + 1 \text{ when } n \text{ is odd}
+Confidence: 1.000
+
+Component Patterns:
+- Type: Geometric Sequence
+  Formula: a_{2n} = 2^n
+- Type: Arithmetic Progression
+  Formula: a_{2n+1} = 2(2n+1) + 1
+
+Predicted next terms: [32, 19, 64]
+
+Explanation: The sequence can be split into two parts: even and odd positions. The even positions follow a geometric progression like 2^(n/2), while odd positions follow an arithmetic pattern like 2n+1.
+
+Memory Statistics:
+- Patterns in episodic memory: 9
+- Successful patterns stored: 8
+
+Prediction Analysis:
+Predicted next 3 terms: [32, 19, 64]
+Actual next 3 terms: [32, 19, 64]
+✓ Prediction matches exactly!
+
+================================================================================
+Test Case 10: [2, 2, 6, 10, 22, 38, 74]
+================================================================================
+
+Found similar patterns in memory:
+- Sequence: [2, 4, 6, 8, 10, 12]
+  Pattern type: Arithmetic Sequence
+  Formula: a_n = 2n
+  Similarity score: 0.816
+- Sequence: [2, 4, 8, 16, 32, 64]
+  Pattern type: Geometric Sequence
+  Formula: a_n = 2^n
+  Similarity score: 0.880
+- Sequence: [1, 1, 2, 3, 5, 8, 13]
+  Pattern type: Fibonacci Sequence
+  Formula: a_n = a_{n-1} + a_{n-2}, a_0 = 1, a_1 = 1
+  Similarity score: 0.766
+- Sequence: [2, 3, 8, 7, 32, 11, 128, 15, 512, 19]
+  Pattern type: Composite Periodic Sequence
+  Formula: a_n = 2^{n/2} when n is even, a_n = 2n + 1 when n is odd
+  Similarity score: 0.892
+- Sequence: [1, 1, 3, 5, 11, 19, 37, 61, 115, 187]
+  Pattern type: Hybrid Sequence
+  Formula: a_{n} = 2a_{n-1} + (-1)^{n}a_{n-2}
+  Similarity score: 0.851
+- Sequence: [2, 5, 11, 14, 20, 23, 29, 32, 38, 41]
+  Pattern type: Alternating Arithmetic Sequence
+  Formula: a_n = 3n + [0, 2] where [0, 2] alternates every term
+  Similarity score: 0.857
+- Sequence: [1, 4, 13, 40, 121, 364, 1093]
+  Pattern type: Geometric Progression with Anomaly
+  Formula: a_n = 3^{n-1} * a_1
+  Similarity score: 0.806
+- Sequence: [4, 6, 13, 28, 61, 132, 283]
+  Pattern type: Hybrid Sequence
+  Formula: a_n = a_{n-1} + 2^n
+  Similarity score: 0.812
+- Sequence: [2, 3, 4, 7, 8, 11, 16, 15]
+  Pattern type: Composite Pattern
+  Formula: a_n = 2^{(n/2)} \text{ when } n \text{ is even}, \ a_n = 2n + 1 \text{ when } n \text{ is odd}
+  Similarity score: 0.797
+
+Analysis Results:
+Pattern type: Composite Pattern with Even Position Emphasis
+Formula: a_n = \begin{cases} 2^k + 2^{(k-1)} & \text{ if } n = 2k \text{ (even position)} \\ 2 \times (3k+1) & \text{ if } n = 2k-1 \text{ (odd position)} \end{cases}
+Confidence: 0.939
+
+Component Patterns:
+- Type: Arithmetic Pattern (Odd Positions)
+  Formula: a_{2k-1} = 2 \times (3k+1)
+- Type: Exponential Pattern (Even Positions with Modifications)
+  Formula: a_{2k} = 2^k + 2^{(k-1)}
+
+Predicted next terms: [130, 258, 454]
+
+Explanation: This pattern clearly differentiates between numbers at even and odd positions. The even indices follow a growing pattern of powers of 2, enhanced with an additional smaller power of 2. Odd indices follow a simple arithmetic pattern (derived from position correlation). The correlations suggest strong alignment with the index, and hence offer a structured and predictable pattern.
+
+Memory Statistics:
+- Patterns in episodic memory: 10
+- Successful patterns stored: 9
+
+Prediction Analysis:
+Predicted next 3 terms: [130, 258, 454]
+Actual next 3 terms: [166, 298, 478]
+× Prediction differs from actual
+
+================================================================================
+Test Case 11: [3, 7, 14, 18, 25, 29, 36]
+================================================================================
+
+Found similar patterns in memory:
+- Sequence: [2, 4, 8, 16, 32, 64]
+  Pattern type: Geometric Sequence
+  Formula: a_n = 2^n
+  Similarity score: 0.859
+- Sequence: [2, 3, 8, 7, 32, 11, 128, 15, 512, 19]
+  Pattern type: Composite Periodic Sequence
+  Formula: a_n = 2^{n/2} when n is even, a_n = 2n + 1 when n is odd
+  Similarity score: 0.845
+- Sequence: [1, 1, 3, 5, 11, 19, 37, 61, 115, 187]
+  Pattern type: Hybrid Sequence
+  Formula: a_{n} = 2a_{n-1} + (-1)^{n}a_{n-2}
+  Similarity score: 0.780
+- Sequence: [2, 5, 11, 14, 20, 23, 29, 32, 38, 41]
+  Pattern type: Alternating Arithmetic Sequence
+  Formula: a_n = 3n + [0, 2] where [0, 2] alternates every term
+  Similarity score: 0.889
+- Sequence: [1, 4, 13, 40, 121, 364, 1093]
+  Pattern type: Geometric Progression with Anomaly
+  Formula: a_n = 3^{n-1} * a_1
+  Similarity score: 0.802
+- Sequence: [4, 6, 13, 28, 61, 132, 283]
+  Pattern type: Hybrid Sequence
+  Formula: a_n = a_{n-1} + 2^n
+  Similarity score: 0.799
+- Sequence: [2, 2, 6, 10, 22, 38, 74]
+  Pattern type: Composite Pattern with Even Position Emphasis
+  Formula: a_n = \begin{cases} 2^k + 2^{(k-1)} & \text{ if } n = 2k \text{ (even position)} \\ 2 \times (3k+1) & \text{ if } n = 2k-1 \text{ (odd position)} \end{cases}
+  Similarity score: 0.861
+
+Analysis Results:
+Pattern type: Alternating Arithmetic Sequence
+Formula: a_n = 3n + (-1)^{n}(n-1)
+Confidence: 1.000
+
+Component Patterns:
+- Type: Position-Based Alternation
+  Formula: Even-indexed terms: add constant; Odd-indexed terms: add incrementing index difference
+
+Predicted next terms: [40, 47, 51]
+
+Explanation: The sequence displays two alternating additions to the sequences: 3n when the position is odd, and alternatively subtracting one less than the sequence's position index when it is even.
+
+Memory Statistics:
+- Patterns in episodic memory: 11
+- Successful patterns stored: 10
+
+Prediction Analysis:
+Predicted next 3 terms: [40, 47, 51]
+Actual next 3 terms: [40, 47, 51]
+✓ Prediction matches exactly!
