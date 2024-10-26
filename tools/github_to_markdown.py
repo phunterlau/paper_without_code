@@ -5,6 +5,7 @@ from pathlib import Path
 import mimetypes
 from typing import Tuple, List
 import re
+import json
 from urllib.parse import urlparse
 
 def github_to_markdown(repo_url: str) -> str:
@@ -18,13 +19,60 @@ def github_to_markdown(repo_url: str) -> str:
     Returns:
         str: Path to the generated markdown file
     """
-    def parse_github_url(url: str) -> Tuple[str, str, str]:
+    def convert_notebook_to_python(notebook_path: Path) -> str:
         """
-        Parse GitHub URL to extract repo URL and subdirectory path.
+        Convert Jupyter notebook to Python code with markdown cells as comments.
         
+        Args:
+            notebook_path (Path): Path to the .ipynb file
+            
         Returns:
-            Tuple[str, str, str]: (repo_url, subdirectory_path, repo_name)
+            str: Converted Python code
         """
+        try:
+            with open(notebook_path, 'r', encoding='utf-8') as f:
+                notebook = json.load(f)
+
+            python_code = []
+            cell_counter = 0
+
+            for cell in notebook['cells']:
+                cell_counter += 1
+                
+                # Handle markdown cells
+                if cell['cell_type'] == 'markdown':
+                    markdown_content = ''.join(cell['source'])
+                    # Convert markdown content to comments
+                    python_code.extend([
+                        f"\n#{'=' * 78}",
+                        f"# Markdown Cell {cell_counter}:",
+                        f"#{'=' * 78}"
+                    ])
+                    for line in markdown_content.split('\n'):
+                        # Preserve empty lines in markdown
+                        if line.strip():
+                            python_code.append(f"# {line}")
+                        else:
+                            python_code.append("#")
+                
+                # Handle code cells
+                elif cell['cell_type'] == 'code':
+                    code_content = ''.join(cell['source'])
+                    if code_content.strip():  # Skip empty code cells
+                        python_code.extend([
+                            f"\n#{'=' * 78}",
+                            f"# Code Cell {cell_counter}:",
+                            f"#{'=' * 78}",
+                            code_content.rstrip()
+                        ])
+
+            return '\n'.join(python_code)
+
+        except (json.JSONDecodeError, KeyError, FileNotFoundError) as e:
+            return f"# Error converting notebook: {str(e)}"
+
+    def parse_github_url(url: str) -> Tuple[str, str, str]:
+        """Parse GitHub URL to extract repo URL and subdirectory path."""
         pattern = r'https://github\.com/([^/]+/[^/]+)(?:/(?:tree|blob)/[^/]+)?(/.*)?'
         match = re.match(pattern, url)
         
@@ -51,7 +99,7 @@ def github_to_markdown(repo_url: str) -> str:
 
     def is_excluded_file(file_path: Path) -> bool:
         """Check if a file should be excluded from content processing."""
-        excluded_extensions = {'.html', '.txt', '.ipynb', '.yaml', '.json', '.csv', '.tsv'}
+        excluded_extensions = {'.html', '.txt'}  # Removed .ipynb from exclusion
         return file_path.suffix in excluded_extensions
 
     def is_text_file(file_path: Path) -> bool:
@@ -63,7 +111,7 @@ def github_to_markdown(repo_url: str) -> str:
                                       '.kt', '.kts', '.sh', '.bash', '.yaml', '.yml',
                                       '.json', '.xml', '.css', '.scss', '.sql',
                                       '.conf', '.cfg', '.ini', '.toml', '.env',
-                                      '.html', '.ipynb', '.ts'}  # Added back for line counting
+                                      '.html', '.ipynb'}
         return mime_type.startswith('text/')
 
     def should_ignore(path: Path) -> bool:
@@ -73,19 +121,7 @@ def github_to_markdown(repo_url: str) -> str:
         return any(pattern in path.parts for pattern in ignore_patterns)
 
     def process_directory(directory: Path, target_subdir: str = '') -> Tuple[List[str], List[Tuple[str, Path]], set]:
-        """
-        Recursively process a directory and return its structure and file paths.
-        
-        Args:
-            directory (Path): Directory path to process
-            target_subdir (str): Target subdirectory to process (if specified)
-            
-        Returns:
-            Tuple[List[str], List[Tuple[str, Path]], set]: 
-                - List of strings representing directory structure
-                - List of tuples containing (relative path, absolute path) for files
-                - Set of included paths
-        """
+        """Recursively process a directory and return its structure and file paths."""
         structure = []
         files_to_process = []
         included_paths = set()
@@ -125,7 +161,6 @@ def github_to_markdown(repo_url: str) -> str:
                             
                         structure.append(f"{indent}- {prefix} {path.name}{line_info}")
                     else:
-                        # For binary or unrecognized files
                         prefix = "📄"
                         structure.append(f"{indent}- {prefix} {path.name}")
 
@@ -148,15 +183,25 @@ def github_to_markdown(repo_url: str) -> str:
 
         for rel_path, abs_path in files:
             try:
-                with open(abs_path, 'r', encoding='utf-8') as f:
-                    file_content = f.read()
-                    if file_content.strip():  # Only include non-empty files
-                        content.extend([
-                            f"### 📝 `{rel_path}`\n",
-                            f"```{abs_path.suffix[1:] if abs_path.suffix else ''}",
-                            file_content.rstrip(),
-                            "```\n"
-                        ])
+                if abs_path.suffix == '.ipynb':
+                    # Convert notebook to Python
+                    file_content = convert_notebook_to_python(abs_path)
+                    content.extend([
+                        f"### 📝 `{rel_path}` (converted from notebook)\n",
+                        "```python",
+                        file_content.rstrip(),
+                        "```\n"
+                    ])
+                else:
+                    with open(abs_path, 'r', encoding='utf-8') as f:
+                        file_content = f.read()
+                        if file_content.strip():  # Only include non-empty files
+                            content.extend([
+                                f"### 📝 `{rel_path}`\n",
+                                f"```{abs_path.suffix[1:] if abs_path.suffix else ''}",
+                                file_content.rstrip(),
+                                "```\n"
+                            ])
             except UnicodeDecodeError:
                 content.extend([
                     f"### 📝 `{rel_path}`\n",
