@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "node-html-to-image": "^5.0.0"
+  }
+}
