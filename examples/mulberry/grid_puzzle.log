@@ -1,0 +1,4020 @@
+
+🤖 Model Configuration:
+
+CONSERVATIVE:
+- Temperature: 0.1
+- Role: Conservative reasoning with high precision
+
+BALANCED:
+- Temperature: 0.5
+- Role: Balanced exploration and exploitation
+
+CREATIVE:
+- Temperature: 1.0
+- Role: Creative reasoning with more exploration
+Starting Sequential Number Logic Puzzle...
+
+Puzzle:
+
+Place numbers 1-4 in a 2x2 grid to satisfy:
+- Each row and column contains each number exactly once
+- Number in (1,1) is even
+- Number in (2,2) is greater than number in (1,2)
+- Sum of first row is greater than sum of second row
+
+
+🔍 Starting CoMCTS Search
+Initial grid:
+
+┌───┬───┐
+│ · │ · │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+=========== Iteration 1/50 ===========
+
+🔍 SELECTION Phase
+At root node
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ · │ · │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 2 because:
+This number is valid because it is the only even number available (1-4) that can be placed in position (1,1) while satisfying the requirement that the number in (1,1) must be even.
+✅ Valid move! Adding node for number 2
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 2 because:
+This number is valid because it is the only even number available (1-4) that can be placed in position (1,1), satisfying the condition that this position must hold an even number.
+✅ Valid move! Adding node for number 2
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 2 because:
+This number is valid because it is the only even number available (2) that can be placed in position (1,1) according to the specified rules. Since the numbers must be unique in each row and column, and the only even number from the set {1, 2, 3, 4} is 2, it fits the requirement perfectly. Additionally, it allows for valid placements in the remaining positions without violating the sum and greater-than constraints.
+✅ Valid move! Adding node for number 2
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ · │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+Progress score: 0.25 (1/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.62
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.62
+Level 1:
+  Visits: 1
+  Score: 0.00 → 0.62
+Backpropagated through 2 levels
+
+=========== Iteration 2/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ · │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 2 because:
+This number is valid because it is even, satisfying the condition for (1,1). It also allows for the possibility of (2,2) being greater than (1,2) if (2,2) is 3 or 4, and it helps maintain the sum condition since the first row would then be 2 + 2 = 4, which is greater than the sum of the second row (0).
+✅ Valid move! Adding node for number 2
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is not already in the grid and it is greater than 2, allowing for (2,2) to be 3, which satisfies the condition that (2,2) is greater than (1,2). It also helps ensure that the sum of the first row (2 + 4 = 6) is greater than the sum of the second row (0).
+✅ Valid move! Adding node for number 4
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 1 because:
+This number is valid because it is the only remaining number that can be placed in the first row without violating the constraints. It maintains the uniqueness in the row and column, and since the number in (2,2) must be greater than the number in (1,2), it allows for valid placements in (2,2).
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it does not violate the uniqueness rule in the row and column. It also allows for the number in (2,2) to be greater than the number in (1,2), ensuring that the constraints are met.
+✅ Valid move! Adding node for number 3
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because it fits the requirement of being different from 2, satisfies the condition that the number in (2,2) must be greater than the number at (1,2) (since (2,2) can only then be 3), and helps to ensure that the sum of the first row exceeds that of the second row.
+✅ Valid move! Adding node for number 4
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because it meets the column constraints and allows for (2,2) to be 4, which is greater than 3, thus satisfying the condition. Additionally, it contributes to making the sum of the first row greater than the second.
+✅ Valid move! Adding node for number 3
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 1 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+Progress score: 0.50 (2/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.75
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.75
+Level 1:
+  Visits: 1
+  Score: 0.00 → 0.75
+Level 2:
+  Visits: 2
+  Score: 0.62 → 0.69
+Backpropagated through 3 levels
+
+=========== Iteration 3/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ · │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because placing 3 in (1,2) allows the first row to sum to 5 (2 + 3), while the second row can only sum to 4 (1 + 0), satisfying the condition that the sum of the first row is greater than the sum of the second row. Additionally, it does not violate the column constraint since the second column will then contain 3 and 0, which is valid.
+✅ Valid move! Adding node for number 3
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because placing 4 in (1,2) allows the first row to sum to 6 (2 + 4), while the second row can only sum to 3 (1 + 0), satisfying the condition that the sum of the first row is greater than the sum of the second row. Furthermore, it does not violate the column constraint since the second column will then contain 4 and 0, which is valid.
+✅ Valid move! Adding node for number 4
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because placing 3 in (1,2) allows for the first row to contain both an even number (2) and an odd number (3), satisfying the requirement for unique numbers in the row. Additionally, since (2,2) must be greater than (1,2) and can only be 4 (the only remaining number), this ensures that the second row can still meet the criteria of having unique numbers.
+✅ Valid move! Adding node for number 3
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because placing 4 in (1,2) would mean the second row can only contain 1, which would satisfy the condition that (2,2) is greater than (1,2). However, this does not satisfy the requirement that the sum of the first row is greater than the second row since the first row would then sum to 6 and the second row to 3.
+✅ Valid move! Adding node for number 4
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 2 because:
+This number is valid because it satisfies the condition of being even for position (1,1), and allows the sum of the first row to potentially exceed the second row as there are remaining options available for (2,1) and (2,2).
+✅ Valid move! Adding node for number 2
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid as it is the only option left to keep the sum of the first row greater than the second row once the other placements are made. Also, it maintains uniqueness in the column.
+✅ Valid move! Adding node for number 4
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+Progress score: 0.50 (2/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.75
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.75
+Level 1:
+  Visits: 1
+  Score: 0.00 → 0.75
+Level 2:
+  Visits: 3
+  Score: 0.69 → 0.71
+Backpropagated through 3 levels
+
+=========== Iteration 4/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.75)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 2 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 1 because:
+This number is valid because it is the only remaining number that can be placed in (2,1) without violating the rules. The first row already contains 2, and the second row must contain 1 to satisfy the unique placement requirement.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because placing 3 in (2,1) allows for 4 to be placed in (2,2), satisfying the condition that (2,2) is greater than (1,2) (which is 2). However, it does not satisfy the sum condition, so it is less likely.
+✅ Valid move! Adding node for number 3
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 1 because:
+This number is valid because it is the only remaining option for the first column, satisfying the requirement that each number appears exactly once in each row and column. Additionally, placing 1 in (2,1) allows for the number 2 to remain in (1,1), which is required to be even.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it does not violate any constraints and is not already present in the grid. Placing 3 in (2,1) allows for 4 to be placed in (2,2), which satisfies the condition that the number in (2,2) is greater than the number in (1,2). However, it may not satisfy the sum condition.
+✅ Valid move! Adding node for number 3
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid because it is not already present in the grid, satisfies the requirement of being placed in the first column, and maintains the condition that the sum of the first row remains greater than the second row.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because it is not present in the grid and fulfills the criteria for both the row and column constraints.
+✅ Valid move! Adding node for number 3
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 2 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 2:
+  Visits: 2
+  Score: 0.75 → 0.81
+Level 3:
+  Visits: 4
+  Score: 0.71 → 0.75
+Backpropagated through 4 levels
+
+=========== Iteration 5/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.75)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 1 because:
+This number is valid because placing 1 in (2,1) allows the grid to maintain the unique number constraint in both rows and columns. It also satisfies the condition that the number in (2,2) must be greater than the number in (1,2) (which is 3), since 1 < 3. Additionally, the sum of the first row (2 + 3 = 5) will be greater than the sum of the second row (1 + 0 = 1).
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because placing 4 in (2,1) allows the grid to maintain the unique number constraint in both rows and columns. It also satisfies the condition that the number in (2,2) must be greater than the number in (1,2) (which is 3), since 4 > 3. Additionally, the sum of the first row (2 + 3 = 5) will be greater than the sum of the second row (4 + 0 = 4).
+✅ Valid move! Adding node for number 4
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 1 because:
+This number is valid because it is not already in the grid, and placing 1 in (2,1) satisfies the condition that each number appears exactly once in the rows and columns. It also allows the sum of the first row (2 + 3 = 5) to remain greater than the sum of the second row (1 + 0 = 1).
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is not already in the grid, and placing 4 in (2,1) satisfies the condition that each number appears exactly once in the rows and columns. Additionally, it ensures that the number in (2,2) can be 3 (which is greater than 2), and the sum of the first row (2 + 3 = 5) is still greater than the sum of the second row (4 + 0 = 4).
+✅ Valid move! Adding node for number 4
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid because it is the only available number left for the first column while satisfying the sum condition for the rows. Placing 1 in (2,1) allows for (1,2) to be 3, which maintains the greater-than condition for (2,2). The sums would be (2+3=5) for the first row and (1+0=1) for the second row, which satisfies the requirement that the first row's sum is greater than the second's.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because it does not violate the column constraints and placing 4 in (2,1) allows (1,2) to be 3 (already placed), leading to (2,2) being 2, which satisfies the condition for greater-than. However, it does not meet the sum condition (6 vs. 4). Thus, while it's a valid placement, it doesn't satisfy all requirements.
+✅ Valid move! Adding node for number 4
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 2:
+  Visits: 2
+  Score: 0.75 → 0.81
+Level 3:
+  Visits: 5
+  Score: 0.75 → 0.78
+Backpropagated through 4 levels
+
+=========== Iteration 6/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.62)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ · │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because placing 3 in (1,2) allows the first row to sum to 5 (2 + 3), while the second row can only sum to 1 (1 + 0), satisfying the condition that the sum of the first row is greater than the second row. Additionally, it does not violate the column constraint since 3 is not already in column 2.
+✅ Valid move! Adding node for number 3
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because placing 4 in (1,2) allows the first row to sum to 6 (2 + 4), while the second row can sum to 1 (1 + 0), satisfying the condition that the sum of the first row is greater than the second row. Furthermore, it does not violate the column constraint since 4 is not already in column 2.
+✅ Valid move! Adding node for number 4
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 2 because:
+This number is valid because it is even, satisfies the condition for position (1,1) being even, and does not violate the uniqueness requirement for the row and column. However, it does not satisfy the condition that the sum of the first row is greater than the second row.
+✅ Valid move! Adding node for number 2
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is not already present in the grid, it is greater than the existing number in (1,1), and allows for a potential configuration that satisfies all conditions, including the sum of the first row being greater than the second row.
+✅ Valid move! Adding node for number 4
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid because it does not violate any rules. It is the only number that can fit in position (1,2) while ensuring that there are no duplicates in its respective row and column.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid since it is not already in use in row 1 or column 2. However, it does not satisfy the condition regarding the sums of the rows, as it would produce an equal sum. But keeping it as a possibility due to other open constraints.
+✅ Valid move! Adding node for number 3
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because it is not already present in row 1 or column 2. However, using 4 will potentially violate the sum condition since it could lead to row sums being equal rather than adhering to the rule that the first row must be greater.
+✅ Valid move! Adding node for number 4
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+Progress score: 0.50 (2/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.75
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.75
+Level 1:
+  Visits: 2
+  Score: 0.62 → 0.69
+Level 2:
+  Visits: 6
+  Score: 0.78 → 0.77
+Backpropagated through 3 levels
+
+=========== Iteration 7/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.81)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 1 because:
+This number is valid because it is the only remaining number that can be placed in (2,1) without violating the rules. The number 1 is not present in the first row or column, and it satisfies the condition that the sum of the first row (2 + 4 = 6) is greater than the sum of the second row (1 + 0 = 1).
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is not present in the first row or column. Placing 3 in (2,1) allows for the number in (2,2) to be 4, which is greater than 3, satisfying the condition that the number in (2,2) is greater than the number in (1,2). However, it does not satisfy the sum condition as the first row would still be greater than the second row.
+✅ Valid move! Adding node for number 3
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 1 because:
+This number is valid because placing 1 in (2,1) allows the grid to maintain unique numbers in each row and column. The first row will then be [2, 4], and the second row will be [1, 0], which satisfies the condition that the sum of the first row (6) is greater than the sum of the second row (1). This also maintains the constraint that the number in (2,2) must be greater than (1,2).
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because placing 3 in (2,1) allows the grid to maintain unique numbers in each row and column. The first row will be [2, 4], and the second row will be [3, 0], which satisfies the condition that the sum of the first row (6) is greater than the sum of the second row (3). This also maintains the constraint that the number in (2,2) must be greater than (1,2).
+✅ Valid move! Adding node for number 3
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid because it is the only unused number in the first column and does not violate any row or column constraints.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because it is also unused and allows the second row to potentially sum less than the first row while fulfilling the unique row and column rule.
+✅ Valid move! Adding node for number 3
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 3 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 2:
+  Visits: 3
+  Score: 0.81 → 0.83
+Level 3:
+  Visits: 7
+  Score: 0.77 → 0.79
+Backpropagated through 4 levels
+
+=========== Iteration 8/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.81)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 1 because:
+This number is valid because it is the only remaining number that can be placed in (2,1) without violating the rules. The existing numbers in the grid are 2 and 4, and since 1 is not present, it satisfies the condition of each number appearing exactly once in each row and column.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is also a remaining number that can be placed in (2,1). Placing 3 here would allow the number in (2,2) to be 4, which is greater than 3, satisfying the condition that the number in (2,2) is greater than the number in (1,2).
+✅ Valid move! Adding node for number 3
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 1 because:
+This number is valid because it satisfies the requirement of being unique in the column and row. The first row already contains an even number (2), and placing 1 in (2,1) keeps the sum of the first row greater than the second row, as the first row will then sum to 6 (2 + 4) and the second row will sum to 1 (1 + 0).
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it is unique in both the row and column. Placing 3 in (2,1) allows the first row to remain at a sum of 6 (2 + 4) while the second row sums to 3 (3 + 0), satisfying the condition that the first row's sum is greater than the second.
+✅ Valid move! Adding node for number 3
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid because placing 1 in (2,1) allows for the even number 2 to remain in (1,1). With 2 already in (1,1) and 4 in (1,2), the grid can have the configuration [2, 4] in the first row, allowing 1 and 3 to occupy the second row, which results in a valid configuration. Additionally, the condition that the number in (2,2) must be greater than the number in (1,2) (which is 4) does not apply as there is no number in (2,2) yet.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because inserting 3 in (2,1) provides the potential to place 4 in (2,2), satisfying the condition that (2,2) must be greater than (1,2), which is 4. The grid can be completed as [2, 4] in the first row and [3, 4] in the second row, meeting all conditions of unique numbers in rows and columns.
+✅ Valid move! Adding node for number 3
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 3 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 2:
+  Visits: 3
+  Score: 0.81 → 0.83
+Level 3:
+  Visits: 8
+  Score: 0.79 → 0.80
+Backpropagated through 4 levels
+
+=========== Iteration 9/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.69)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 1 because:
+This number is valid because it is not already in the grid, and placing 1 in (2,1) allows the second row to have a sum less than the first row while satisfying the condition that the number in (2,2) must be greater than the number in (1,2).
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 2 because:
+This number is valid because it is already in the grid, and placing 2 in (2,1) maintains the even number in (1,1) and allows for a valid configuration where the sum of the first row can still be greater than the second row.
+✅ Valid move! Adding node for number 2
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is not already in the grid, and placing 3 in (2,1) allows for a valid configuration where the sum of the first row can be greater than the second row, provided that (2,2) is 4.
+✅ Valid move! Adding node for number 3
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is not already in the grid, and placing 4 in (2,1) allows for a valid configuration where the sum of the first row can be greater than the second row, provided that (2,2) is 3.
+✅ Valid move! Adding node for number 4
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 1 because:
+This number is valid because placing 1 in (2,1) allows for 3 in (2,2), which satisfies the condition that (2,2) is greater than (1,2) since (1,2) is 3. It also keeps the first row sum greater than the second row sum, as the first row would sum to 5 (2+3) and the second row would sum to 4 (1+3).
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because placing 3 in (2,1) allows for 4 in (2,2), which satisfies the condition that (2,2) is greater than (1,2) since (1,2) is 3. However, this option does not meet the requirement for the first row sum to be greater than the second row sum, so it is less favorable.
+✅ Valid move! Adding node for number 3
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid because it is the only number left that can occupy the position (2,1) without violating the rules. The existing number in (1,1) is 2 (even), and the number in (1,2) is 3. Placing 1 in (2,1) would allow number 4 in (2,2), satisfying the condition that (2,2) is greater than (1,2). Additionally, the sum of the first row (2 + 3 = 5) is greater than the sum of the second row (1 + 4 = 5), thus satisfying the final condition as well.
+✅ Valid move! Adding node for number 1
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 2:
+  Visits: 3
+  Score: 0.69 → 0.75
+Level 3:
+  Visits: 9
+  Score: 0.80 → 0.81
+Backpropagated through 4 levels
+
+=========== Iteration 10/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.83)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 1 because:
+This number is valid because placing 1 in (2,1) allows the grid to satisfy all conditions. The first row will then contain 2 and 3, summing to 5, while the second row will contain 1 and 0, summing to 1. The number in (2,2) can be 4, which is greater than 3 in (1,2). This placement also ensures that each number from 1-4 is used exactly once.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because placing 4 in (2,1) allows the grid to satisfy all conditions. The first row will then contain 2 and 3, summing to 5, while the second row will contain 4 and 0, summing to 4. The number in (2,2) can be 1, which is less than 3 in (1,2), but this does not satisfy the condition that (2,2) must be greater than (1,2). Therefore, this option is invalid.
+✅ Valid move! Adding node for number 4
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 1 because:
+This number is valid because it is the only remaining number that can be placed in the first column without violating the rules. The number in (1,1) is 2 (even), and (2,2) must be greater than (1,2) which is 3, so (2,2) must be 4. Therefore, (2,1) must be 1 to satisfy all conditions.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is invalid because it cannot be placed in (2,1) since (2,2) must be greater than (1,2) which is 3. Placing 4 in (2,1) would not satisfy the requirement for (2,2) to be greater than (1,2).
+✅ Valid move! Adding node for number 4
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid because it fits the requirement that each row and column should contain the numbers 1-4 exactly once. Also, placing 1 in (2,1) allows (2,2) to be 3 or 4 (which is greater than position (1,2) already containing 3) and maintains the sum requirements.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because it would satisfy the requirement that number in (2,2) would then need to be 3 (which is greater than the number in (1,2) being 3). It helps ensure the sum of the first row remains greater than the second row.
+✅ Valid move! Adding node for number 4
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 4 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 2:
+  Visits: 4
+  Score: 0.83 → 0.84
+Level 3:
+  Visits: 10
+  Score: 0.81 → 0.81
+Backpropagated through 4 levels
+
+=========== Iteration 11/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.83)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 1 because:
+This number is valid because placing 1 in (2,1) allows the first row to sum to 5 (2 + 3) and the second row to sum to 1, satisfying the condition that the sum of the first row is greater than the sum of the second row. Additionally, it does not violate the unique number rule in the columns.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because placing 4 in (2,1) allows the first row to sum to 5 (2 + 3) and the second row to sum to 4, satisfying the condition that the sum of the first row is greater than the sum of the second row. It also maintains the uniqueness of numbers in the columns.
+✅ Valid move! Adding node for number 4
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 1 because:
+This number is valid because placing 1 in (2,1) will satisfy the condition that each number appears exactly once in the grid. It also allows for the placement of 4 in (2,2), which is greater than the number in (1,2) (which is 3), thus satisfying the constraints.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because placing 4 in (2,1) allows for 3 to be in (1,2) and 2 to remain in (1,1), satisfying the condition that the number in (2,2) (which would be 3) is less than the number in (2,1). However, this placement violates the uniqueness rule since 4 cannot be reused.
+✅ Valid move! Adding node for number 4
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid because it has not been used yet and would allow the second row's sum to potentially be less than that of the first row, thus satisfying the constraints.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 2 because:
+This number cannot be used as it is already placed in position (1,1).
+✅ Valid move! Adding node for number 2
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because it is not currently in the grid, and placing 3 in (2,1) would make the second row's sum lower than the first row's sum.
+✅ Valid move! Adding node for number 3
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because placing it in (2,1) does not conflict with existing numbers in the grid and fulfills the constraints regarding unique placements in each row and column.
+✅ Valid move! Adding node for number 4
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 3 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 2:
+  Visits: 4
+  Score: 0.83 → 0.84
+Level 3:
+  Visits: 11
+  Score: 0.81 → 0.82
+Backpropagated through 4 levels
+
+=========== Iteration 12/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.75)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 1 because:
+This number is valid because placing 1 in (2,1) allows the grid to satisfy all conditions. The first row will then be [2, 4] and the second row will be [1, 0]. The sum of the first row (6) is greater than the sum of the second row (1), and it maintains the uniqueness of numbers in both rows and columns.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because placing 3 in (2,1) allows the grid to satisfy all conditions. The first row will be [2, 4] and the second row will be [3, 0]. The sum of the first row (6) is greater than the sum of the second row (3), and it maintains the uniqueness of numbers in both rows and columns.
+✅ Valid move! Adding node for number 3
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 1 because:
+This number is valid because placing 1 in (2,1) allows the second row to contain unique numbers (1 and 0) while satisfying the requirement that the sum of the first row (2 + 4 = 6) is greater than the sum of the second row (1 + 0 = 1). Additionally, it maintains the uniqueness of numbers in the column.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because placing 3 in (2,1) allows the second row to contain unique numbers (3 and 0) while satisfying the requirement that the sum of the first row (2 + 4 = 6) is greater than the sum of the second row (3 + 0 = 3). It also maintains the uniqueness of numbers in the column.
+✅ Valid move! Adding node for number 3
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid because it can be placed in (2,1) without violating any grid constraints. The first row already has 2 and 4, so 1 is a valid option. Additionally, placing 1 in (2,1) ensures that the second row will have a different configuration without duplicate numbers.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because placing 3 in (2,1) satisfies the condition of having unique numbers in the row and column. The first row has 2 and 4, allowing 3 to fit without conflicts. Also, placing 3 makes sure that the sum of row two will remain low enough to fulfill the condition of row one having a greater sum.
+✅ Valid move! Adding node for number 3
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 2:
+  Visits: 4
+  Score: 0.75 → 0.78
+Level 3:
+  Visits: 12
+  Score: 0.82 → 0.82
+Backpropagated through 4 levels
+
+=========== Iteration 13/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.84)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 1 because:
+This number is valid because it is the only remaining number that can be placed in the first column without violating the rules. The number 2 is already in (1,1), and 4 is in (1,2), leaving only 1 for (2,1).
+✅ Valid move! Adding node for number 1
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 1 because:
+This number is valid because placing 1 in (2,1) satisfies the condition that each number appears exactly once in the grid. Additionally, it keeps the total of the first row greater than the second row, as the first row will sum to 6 (2 + 4) and the second row will sum to 1 + 0 = 1.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because placing 3 in (2,1) satisfies the condition that each number appears exactly once in the grid. The first row will still sum to 6 (2 + 4) and the second row will sum to 3 + 0 = 3, maintaining the requirement that the first row's sum is greater than the second row's.
+✅ Valid move! Adding node for number 3
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid because it is the only available option for position (2,1) given the current grid state. The other numbers (2, 3, and 4) either already occupy positions in the grid or violate the constraints.
+✅ Valid move! Adding node for number 1
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 2:
+  Visits: 5
+  Score: 0.84 → 0.85
+Level 3:
+  Visits: 13
+  Score: 0.82 → 0.83
+Backpropagated through 4 levels
+
+=========== Iteration 14/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.84)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 1 because:
+This number is valid because it is the only remaining number that can be placed in (2,1) without violating the rules. The existing numbers in the grid are 2 and 4, which means 1 and 3 are the only options left. Since 3 cannot be placed in (2,1) because it would violate the condition that (2,2) must be greater than (1,2), 1 is the only valid choice.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is the only remaining number that can be placed in (2,1) without violating the rules. The existing numbers in the grid are 2 and 4, which means 1 and 3 are the only options left. Since placing 3 in (2,1) allows for 4 to be in (2,2), which is greater than 2 in (1,2), it satisfies the conditions.
+✅ Valid move! Adding node for number 3
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 1 because:
+This number is valid because placing 1 in (2,1) allows the first row to contain both 2 and 4, satisfying the requirement of having unique numbers in each row and column. Additionally, it keeps the sum of the first row (2 + 4 = 6) greater than the sum of the second row (1 + 0 = 1).
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because placing 3 in (2,1) allows the first row to still contain both 2 and 4, maintaining unique numbers in each row and column. The sum of the first row remains greater than the second row (2 + 4 = 6 > 3 + 0 = 3).
+✅ Valid move! Adding node for number 3
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid because it is the only number left that will not violate the rules of placing 1-4 in the grid. It doesn't appear in row 2 or column 1, satisfying the requirement of all unique numbers in rows and columns.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid as both numbers in row 2 and column 1 are not occupying this position and it will satisfy the criteria of unique numbers in rows and columns.
+✅ Valid move! Adding node for number 3
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 2:
+  Visits: 5
+  Score: 0.84 → 0.85
+Level 3:
+  Visits: 14
+  Score: 0.83 → 0.83
+Backpropagated through 4 levels
+
+=========== Iteration 15/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.78)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 2 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 1 because:
+This number is valid because it is the only remaining number that can be placed in (2,1) without violating the rules. The grid would then be [[2, 2], [1, 0]], which satisfies the condition that each number appears exactly once in each row and column.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because placing 3 in (2,1) would result in the grid [[2, 2], [3, 0]]. This satisfies the condition that each number appears exactly once in each row and column, and it allows for a valid placement of 4 in (2,2) to satisfy the greater than condition.
+✅ Valid move! Adding node for number 3
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because placing 4 in (2,1) would result in the grid [[2, 2], [4, 0]]. This satisfies the condition that each number appears exactly once in each row and column, and it allows for a valid placement of 3 in (2,2) to satisfy the greater than condition.
+✅ Valid move! Adding node for number 4
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 1 because:
+This number is valid because it is the only number left that can be placed in the first column without repeating any numbers in the row or column. Additionally, placing 1 in (2,1) allows for the fulfillment of the condition that the number in (2,2) must be greater than the number in (1,2), as (1,2) would be 2, and (2,2) could then be 3 or 4.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it does not conflict with the existing numbers in the grid. If (2,1) is 3, then (2,2) can be 4, satisfying the condition that (2,2) is greater than (1,2) which is 2.
+✅ Valid move! Adding node for number 3
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid because placing 1 in (2,1) satisfies the row and column constraints, avoids duplicates, and maintains the conditions of the problem (1 is less than 2, which is in (1,2), fulfilling the requirement that the number in (2,2) must be greater than that in (1,2)).
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because placing 3 in (2,1) meets the criteria of having distinct numbers in the row and column, and 3 is greater than 2 (in (1,2)), thus also satisfying the problem constraints.
+✅ Valid move! Adding node for number 3
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 2 │ 
+├───┼───┤
+│ 3 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 2:
+  Visits: 5
+  Score: 0.78 → 0.80
+Level 3:
+  Visits: 15
+  Score: 0.83 → 0.83
+Backpropagated through 4 levels
+
+=========== Iteration 16/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.85)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 1 because:
+This number is valid because it is not already in the grid, and it satisfies the condition that the number in (2,2) must be greater than the number in (1,2) (which is 3). Placing 1 in (2,1) allows for 4 to be placed in (2,2), satisfying all conditions.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is not already in the grid, and it satisfies the condition that the number in (2,2) must be greater than the number in (1,2) (which is 3). Placing 4 in (2,1) allows for 3 to be placed in (2,2), satisfying all conditions.
+✅ Valid move! Adding node for number 4
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 1 because:
+This number is valid because placing 1 in (2,1) allows the first row to contain 2 and 3, while the second row can contain 1 and 0. Additionally, 1 is less than 3, satisfying the condition that the number in (2,2) must be greater than (1,2).
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because placing 4 in (2,1) allows the first row to contain 2 and 3, and the second row can then contain 4 and 0. This satisfies the requirement for the sum of the first row to be greater than the second row, and 4 is greater than 3, which satisfies the condition for (2,2).
+✅ Valid move! Adding node for number 4
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid because it hasn't been used in the grid yet, and it allows the second row to remain lower in sum compared to the first row, which contains 2 and 3. Additionally, it does not violate any other conditions.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because it hasn't been used yet, and it will maintain the condition that the second row has a lower sum than the first row while also being greater than the number in (1,2) which is 3.
+✅ Valid move! Adding node for number 4
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 4 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 2:
+  Visits: 6
+  Score: 0.85 → 0.85
+Level 3:
+  Visits: 16
+  Score: 0.83 → 0.84
+Backpropagated through 4 levels
+
+=========== Iteration 17/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.85)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 2 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 1 because:
+This number is valid because it is the only remaining number that can be placed in (2,1) without violating the rules. The number 1 is not present in the grid, and placing it here allows the sum of the first row to be greater than the second row, as the first row will sum to 4 (2 + 2) and the second row will sum to 1 (1 + 0).
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is not present in the grid and placing it in (2,1) allows the second row to sum to 3 (3 + 0), which is still less than the first row's sum of 4 (2 + 2). Additionally, it satisfies the condition that the number in (2,2) must be greater than the number in (1,2) if (2,2) is filled with 4.
+✅ Valid move! Adding node for number 3
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 1 because:
+This number is valid because placing 1 in (2,1) satisfies the constraints of having each number 1-4 appear exactly once in the grid. It also allows for the possibility of placing a valid number greater than it in (2,2), which needs to be greater than the number in (1,2) (currently 2). With 1 in (2,1), the only remaining number for (2,2) would be 3, which is greater than 2, satisfying all conditions.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because placing 3 in (2,1) means that (2,2) must be 4 (the only remaining number). This keeps the grid valid, as 4 is greater than the number in (1,2) (which is 2). However, the sum of the first row (2 + 2) would still be greater than the second row (3 + 4 = 7), satisfying all conditions.
+✅ Valid move! Adding node for number 3
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid because placing 1 in (2,1) allows us to use both even numbers in the grid (2 is already in the first row), satisfying the even placement rule in (1,1), and it does not violate the column constraints. Additionally, with 2 in (1,1) and 1 in (2,1), we can place 3 in (2,2) which is greater than the number in (1,2) (which must be 2). This combination allows for a greater sum in the first row than in the second since 2+3 > 1.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number can also work because 3 in (2,1) allows for placing 4 in (2,2), satisfying the condition that (2,2) is greater than (1,2) and allows the sum of the first row (2+4) to be greater than the second row (3). However, this placement would contradict the unique number requirement in the column since 2 is placed in (1,1).
+✅ Valid move! Adding node for number 3
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 2 │ 
+├───┼───┤
+│ 3 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 2:
+  Visits: 6
+  Score: 0.85 → 0.85
+Level 3:
+  Visits: 17
+  Score: 0.84 → 0.84
+Backpropagated through 4 levels
+
+=========== Iteration 18/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.80)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 1 because:
+This number is valid because it is the only remaining number that can be placed in (2,1) without violating the rules. The first row already contains 2 and 4, and the second row must contain 1 and 3. Placing 1 in (2,1) allows for 3 to be placed in (2,2), which satisfies the condition that (2,2) is greater than (1,2). Additionally, the sum of the first row (2 + 4 = 6) is greater than the sum of the second row (1 + 3 = 4).
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because placing 3 in (2,1) allows for 4 to be placed in (2,2), which satisfies the condition that (2,2) is greater than (1,2). However, this would violate the rule that each number must be used exactly once, as 4 is already in the first row. Therefore, this option is not valid.
+✅ Valid move! Adding node for number 3
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 1 because:
+This number is valid because placing 1 in (2,1) allows for 3 to be placed in (2,2), satisfying the condition that the number in (2,2) is greater than the number in (1,2) (which is 4). The first row would then sum to 6 (2 + 4) and the second row would sum to 4 (1 + 3), satisfying the condition that the sum of the first row is greater than the sum of the second row.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because placing 3 in (2,1) allows for 1 to be placed in (2,2), satisfying the condition that the number in (2,2) is greater than the number in (1,2) (which is 4). The first row would sum to 6 (2 + 4) and the second row would sum to 4 (3 + 1), satisfying the condition that the sum of the first row is greater than the sum of the second row.
+✅ Valid move! Adding node for number 3
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid because it is the only remaining option for row 2 and column 1, and placing 1 here would ensure that both the sum of row 1 remains greater than row 2 and all numbers are included in the grid exactly once.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because placing 3 in (2,1) follows the rules of having unique numbers in rows and columns, and the resulting sums will satisfy the conditions set forth.
+✅ Valid move! Adding node for number 3
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 2:
+  Visits: 6
+  Score: 0.80 → 0.81
+Level 3:
+  Visits: 18
+  Score: 0.84 → 0.84
+Backpropagated through 4 levels
+
+=========== Iteration 19/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.85)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 2 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is greater than the number in (1,2) which is 2, satisfying the condition that the number in (2,2) must be greater than the number in (1,2). Additionally, it is not already present in the grid.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is greater than the number in (1,2) which is 2, satisfying the condition that the number in (2,2) must be greater than the number in (1,2). It is also not present in the grid.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it is greater than the number in (1,2) which is 2, satisfying the condition that the number in (2,2) must be greater than the number in (1,2). Additionally, it is not already present in the grid.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is greater than the number in (1,2) which is 2, fulfilling the requirement that the number in (2,2) must be greater. It also maintains the uniqueness of numbers in the grid.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because placing 3 in (2,2) satisfies the condition that 3 is greater than the number in (1,2) which is 2. Additionally, it allows for unique numbers in both rows and columns, fulfilling the requirement of each number being present exactly once. It keeps the sum of the first row greater than the second row since 2 + 2 = 4 in the first row and 1 + 3 = 4 in the second row.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because 4 is greater than the number in (1,2) which is 2, maintaining the condition that the number in (2,2) must be greater than that in (1,2). It also allows for a unique number in the grid and maintains the requirement that the sum of the first row exceeds that of the second (as 2 + 2 > 1 + 4).
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 2 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 2
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 7
+  Score: 0.85 → 0.86
+Level 3:
+  Visits: 19
+  Score: 0.84 → 0.84
+Backpropagated through 4 levels
+
+=========== Iteration 20/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.85)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is greater than the number in (1,2) which is 3, satisfying the condition that the number in (2,2) must be greater than the number in (1,2). Additionally, placing 4 in (2,2) allows the first row to sum to 5 (2 + 3) and the second row to sum to 5 (1 + 4), which does not satisfy the sum condition. However, since 4 is the only number left that can be placed in (2,2) while satisfying the other conditions, it is the only valid option.
+❌ Invalid move! Violations:
+  - Sum of first row must be greater than second row
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is greater than the current number in (1,2) which is 3, satisfying the condition that the number in (2,2) must be greater than the number in (1,2). Additionally, placing 4 in (2,2) allows for a valid configuration of the grid, while ensuring that the sum of the first row (2 + 3 = 5) remains greater than the sum of the second row (1 + 4 = 5).
+❌ Invalid move! Violations:
+  - Sum of first row must be greater than second row
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because it is greater than the number in (1,2) which is 3, satisfying the required condition that the number in (2,2) must be greater. It fits in the grid without violating the uniqueness condition as the other unique numbers 1 and 2 are already placed. The sum of the first row would be 2 + 3 = 5 and the second row would then be 1 + 3 = 4, fulfilling the constraint that the sum of the first row is greater than the second.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because it is also greater than the number in (1,2) which is 3. It meets the grid's requirements for uniqueness as only numbers 1, 2, and 3 are already used. The sum of the first row would be 2 + 3 = 5, while the second row would be 1 + 4 = 5. Although the sum of the rows is not strictly greater as required, the placement would satisfy all other rules.
+❌ Invalid move! Violations:
+  - Sum of first row must be greater than second row
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 2
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 7
+  Score: 0.85 → 0.86
+Level 3:
+  Visits: 20
+  Score: 0.84 → 0.84
+Backpropagated through 4 levels
+
+=========== Iteration 21/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.81)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 1 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 2 because:
+This number is valid because it is even, satisfying the condition for (1,1). It also allows for the placement of 1 and 4 in the second row, which keeps the sum of the first row greater than the second row.
+✅ Valid move! Adding node for number 2
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is greater than 2, which satisfies the condition that the number in (2,2) must be greater than the number in (1,2). It also allows for the placement of 1 in the first row, maintaining the sum condition.
+✅ Valid move! Adding node for number 4
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 2 because:
+This number is valid because it is the only even number available for the first column, fulfilling the requirement that the number in (1,1) must be even. Additionally, placing 2 in (2,1) allows for the remaining number in (1,1) to be 4, satisfying the condition that (2,2) must be greater than (1,2) and ensuring that the sum of the first row is greater than the sum of the second row.
+✅ Valid move! Adding node for number 2
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because placing 4 in (2,1) allows for the remaining number in (1,1) to be 2, which satisfies the condition that (1,1) must be even. However, this placement would not satisfy the condition that (2,2) must be greater than (1,2), as it would force (2,2) to be 3, which is not greater than (1,2). Therefore, this option is less favorable.
+✅ Valid move! Adding node for number 4
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 2 because:
+This number is valid because it satisfies the conditions of being even (as the number in position (1,1) is even), and it respects the unique placement rule in the column since 2 is already used in the first position of the first row. It does not violate any of the current constraints and contributes to keeping the first row's sum greater than the second row's sum.
+✅ Valid move! Adding node for number 2
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number can be a valid option since it does not conflict with numbers already placed in the grid. It will keep the second row unique as well as ensuring that the total sum of the first row can still be higher than the second row's total.
+✅ Valid move! Adding node for number 3
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is a valid option since it is unique to the row and column, and allows for the possibility of the second row's sum remaining less than that of the first row's sum while fulfilling the condition that the number in (2,2) must be greater than the number in (1,2).
+✅ Valid move! Adding node for number 4
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 1 │ 
+├───┼───┤
+│ 4 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 2:
+  Visits: 7
+  Score: 0.81 → 0.82
+Level 3:
+  Visits: 21
+  Score: 0.84 → 0.85
+Backpropagated through 4 levels
+
+=========== Iteration 22/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.86)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is not already present in the grid, satisfies the condition of being greater than the number in (1,2) which is 4, and allows the sum of the first row (2 + 4 = 6) to be greater than the sum of the second row (1 + 3 = 4).
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is not already present in the grid, satisfies the condition of being greater than the number in (1,2) which is 4, but it does not satisfy the sum condition since both rows would equal 6. Therefore, it is not a valid suggestion.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it satisfies the condition that the number in (2,2) is greater than the number in (1,2) (which is 4). Additionally, it is not already in the grid and respects the requirement that each number appears exactly once in each row and column.
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is greater than the number in (1,2) (which is 4), but it cannot be placed in (2,2) due to the uniqueness requirement. Therefore, it is not a valid suggestion.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because it satisfies all conditions: it is not already in the grid, it is greater than the number in (1,2) which is 4, and placing 3 in (2,2) ensures that the sum of the first row (2+4 = 6) is greater than the sum of the second row (1+3 = 4).
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number cannot be placed in (2,2) because it equals the number in (1,2), violating the condition that no number can be repeated in a column.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid as it is not already present in the grid and is less than the number in (1,2), fulfilling the condition that the number in (2,2) must be greater than the number in (1,2). However, this position must also maintain the adequate sum condition, with 1 finalizing the sum of the second row to 1 which does not work.
+❌ Invalid move! Violations:
+  - Row 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 2 because:
+This number cannot be placed in (2,2) because it is already used in (1,1), violating the rule of unique numbers in columns.
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 2
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 8
+  Score: 0.86 → 0.86
+Level 3:
+  Visits: 22
+  Score: 0.85 → 0.85
+Backpropagated through 4 levels
+
+=========== Iteration 23/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.86)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is not already present in the grid, satisfies the condition of being greater than the number in (1,2) which is 4, and allows the first row's sum (2 + 4 = 6) to be greater than the second row's sum (1 + 3 = 4).
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is not already present in the grid, satisfies the condition of being greater than the number in (1,2) which is 4, but it does not satisfy the sum condition since both rows would then equal 6.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because placing 3 in (2,2) satisfies the condition that it is greater than the number in (1,2) which is 4. Additionally, it fits the requirement that each number 1-4 appears exactly once in the grid.
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because placing 4 in (2,2) satisfies the condition that it is greater than the number in (1,2) which is 0. However, it will not satisfy the requirement of having unique numbers in the grid since 4 is already in (1,2).
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because placing 3 in (2,2) satisfies all constraints: the grid would be [[2, 4], [1, 3]], which has different numbers in both the second row and column, and also meets the requirement of (2,2) being greater than (1,2). Additionally, the sum of the first row (2 + 4 = 6) is greater than the second row (1 + 3 = 4).
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is not valid because placing 4 in (2,2) contradicts the column uniqueness rule since 4 is already in (1,2).
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is not valid because placing 1 in (2,2) would violate the requirement that (2,2) is greater than (1,2).
+❌ Invalid move! Violations:
+  - Row 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 2
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 8
+  Score: 0.86 → 0.86
+Level 3:
+  Visits: 23
+  Score: 0.85 → 0.85
+Backpropagated through 4 levels
+
+=========== Iteration 24/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.82)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 1 because:
+This number is valid because it is the only remaining number that can be placed in (2,1) without violating the rules. The existing numbers in the grid are 2 and 3, and placing 1 here allows for the number in (2,2) to be 4, which is greater than 3. Additionally, the sum of the first row (2 + 3 = 5) will be greater than the sum of the second row (1 + 4 = 5), satisfying the condition.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because placing 4 in (2,1) allows for the number in (2,2) to be 3, which is less than 4. However, this violates the condition that the sum of the first row must be greater than the sum of the second row, as it would result in a tie (5 = 5). Therefore, this option is not valid.
+✅ Valid move! Adding node for number 4
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 1 because:
+This number is valid because placing 1 in (2,1) allows for the grid to maintain unique numbers in each row and column. It also satisfies the condition that the number in (2,2) must be greater than the number in (1,2) (which is 3) if we place 4 in (2,2). The first row will then sum to 5 (2+3) and the second row will sum to 5 (1+4), which does not satisfy the sum condition. However, if we place 2 in (2,2) instead, the first row will sum to 5 and the second row will sum to 3, satisfying the sum condition.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 2 because:
+This number is valid because it is even and fits in the grid without repeating any numbers in the same row or column. If we place 2 in (2,1), we can place 4 in (2,2) to satisfy the condition that the number in (2,2) is greater than the number in (1,2) (which is 3). The first row will sum to 5 (2+3) and the second row will sum to 6 (2+4), satisfying the sum condition.
+✅ Valid move! Adding node for number 2
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is not valid because 3 is already placed in (1,2).
+✅ Valid move! Adding node for number 3
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because if we place 4 in (2,1), we can place 2 in (2,2) to satisfy the condition that the number in (2,2) is greater than the number in (1,2) (which is 3). The first row will sum to 5 (2+3) and the second row will sum to 6 (4+2), satisfying the sum condition.
+✅ Valid move! Adding node for number 4
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid because placing 1 in (2,1) allows 2, 3, 4 to be placed in the remaining positions, satisfying all constraints. The number 1 is also less than the number in (1,2) (which is 3) and helps ensure that the sum of the first row is greater than the sum of the second row.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 2 because:
+This number cannot be placed in (2,1) since 2 is already in (1,1).
+✅ Valid move! Adding node for number 2
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is invalid because it conflicts with the existing number in (1,2), which is 3.
+✅ Valid move! Adding node for number 3
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid, as it allows 2 and 3 in other positions while ensuring the sum constraints are still met. It also ensures that the number in (2,2) can remain greater than (1,2); specifically, 4 in (2,1) allows for positioning 2 in (2,2).
+✅ Valid move! Adding node for number 4
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 2:
+  Visits: 8
+  Score: 0.82 → 0.83
+Level 3:
+  Visits: 24
+  Score: 0.85 → 0.85
+Backpropagated through 4 levels
+
+=========== Iteration 25/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.86)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 3, and it satisfies the condition that the sum of the first row (2 + 3 = 5) is greater than the sum of the second row (1 + 3 = 4).
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 3, and it satisfies the condition that the sum of the first row (2 + 3 = 5) is greater than the sum of the second row (1 + 4 = 5). However, it does not strictly satisfy the sum condition, so it is less preferred.
+❌ Invalid move! Violations:
+  - Sum of first row must be greater than second row
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because placing 3 in (2,2) satisfies the condition that it is greater than the number in (1,2) which is 3. However, since 3 is already present in (1,2), it cannot be placed here.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because placing 4 in (2,2) satisfies the condition that it is greater than the number in (1,2) which is 3. Additionally, it maintains the uniqueness in the column and row.
+❌ Invalid move! Violations:
+  - Sum of first row must be greater than second row
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because it is greater than the number in position (1,2) which is 3, satisfying the condition that the number in (2,2) must be greater than the number in (1,2). It also allows for the possibility of fulfilling the row and column constraints while keeping the sums compliant with the given criteria.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because it is greater than the number in position (1,2) which is 3, thus satisfying the condition. Additionally, placing 4 in this position maintains the constraints that each number appears exactly once in each row and column.
+❌ Invalid move! Violations:
+  - Sum of first row must be greater than second row
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 2
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 9
+  Score: 0.86 → 0.86
+Level 3:
+  Visits: 25
+  Score: 0.85 → 0.85
+Backpropagated through 4 levels
+
+=========== Iteration 26/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.86)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is not already in the grid, it is greater than the number in (1,2) which is 3, and it satisfies the condition that the number in (2,2) must be greater than the number in (1,2). Additionally, placing 3 in (2,2) allows for the first row to sum to 5 (2 + 3) and the second row to sum to 4 (1 + 3), satisfying the condition that the sum of the first row is greater than the sum of the second row.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is not already in the grid, it is greater than the number in (1,2) which is 3, and it satisfies the condition that the number in (2,2) must be greater than the number in (1,2). Placing 4 in (2,2) allows for the first row to sum to 5 (2 + 3) and the second row to sum to 5 (1 + 4), which does not satisfy the condition that the sum of the first row is greater than the sum of the second row, but it is still a valid placement.
+❌ Invalid move! Violations:
+  - Sum of first row must be greater than second row
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it satisfies the condition that the number in (2,2) is greater than the number in (1,2) (which is 3). Additionally, it is not already present in the grid and maintains the unique number rule for rows and columns.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is greater than the number in (1,2) (which is 3), and it is not already present in the grid. This also maintains the unique number rule for rows and columns.
+❌ Invalid move! Violations:
+  - Sum of first row must be greater than second row
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because it is greater than the existing number 0 in (1,2) and satisfies the condition that the number in (2,2) must be greater than the number in (1,2). Also, using 4 maintains the uniqueness of numbers in each row and column while adhering to the sum constraint.
+❌ Invalid move! Violations:
+  - Sum of first row must be greater than second row
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 2
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 9
+  Score: 0.86 → 0.86
+Level 3:
+  Visits: 26
+  Score: 0.85 → 0.85
+Backpropagated through 4 levels
+
+=========== Iteration 27/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.83)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 2 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 3, and it satisfies the condition that the number in (2,2) must be greater than the number in (1,2).
+❌ Invalid move! Violations:
+  - Column 1 contains duplicates
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 3, and it satisfies the condition that the number in (2,2) must be greater than the number in (1,2). Additionally, placing 4 in (2,2) would help ensure that the sum of the first row is greater than the sum of the second row.
+❌ Invalid move! Violations:
+  - Column 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it is not already present in the grid, satisfies the condition of being greater than the number in (1,2) which is 3, and maintains the uniqueness required in the column.
+❌ Invalid move! Violations:
+  - Column 1 contains duplicates
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is not already present in the grid, satisfies the condition of being greater than the number in (1,2) which is 3, and maintains the uniqueness required in the column.
+❌ Invalid move! Violations:
+  - Column 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because it is the only remaining number that is greater than the number in (1,2), which is 3. It also satisfies the constraint that each column contains unique numbers.
+❌ Invalid move! Violations:
+  - Column 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 2 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 2
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 9
+  Score: 0.83 → 0.83
+Level 3:
+  Visits: 27
+  Score: 0.85 → 0.85
+Backpropagated through 4 levels
+
+=========== Iteration 28/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.86)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 4, and it satisfies the condition that the sum of the first row (2 + 4 = 6) is greater than the sum of the second row (1 + 3 = 4).
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 4, and it satisfies the condition that the sum of the first row (2 + 4 = 6) is greater than the sum of the second row (1 + 4 = 5). However, it does not satisfy the condition of being greater than (1,2).
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 4, and it satisfies the condition that the number in (2,2) must be greater than the number in (1,2). Additionally, placing 3 in (2,2) allows the first row to have a sum greater than the second row, as the first row will sum to 6 (2 + 4) and the second row will sum to 4 (1 + 3).
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is not already present in the grid, and it is greater than the number in (1,2) which is 4. However, this would violate the condition that (2,2) must be greater than (1,2), so it is not a valid suggestion.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because it is not already used in the grid, it is greater than the number in (1,2) which is 4, and satisfies the condition that each row and column must contain unique numbers.
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is considered valid because it meets the requirements of being greater than the number in (1,2) which is already placed as 4 in that column, and uniquely fulfills the grid condition maintaining unique entries for rows/columns. However, note there's a constraint violation because it is not greater than (1,2), thus actual use might be checked if other placements are possible.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 2
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 10
+  Score: 0.86 → 0.86
+Level 3:
+  Visits: 28
+  Score: 0.85 → 0.85
+Backpropagated through 4 levels
+
+=========== Iteration 29/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.86)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 3 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is the only remaining number that is greater than the number in (1,2) which is 4. It also satisfies the condition that the number in (2,2) must be greater than the number in (1,2).
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+  - Sum of first row must be greater than second row
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is the only number left that can be placed in (2,2) without violating the rules. The existing numbers in the grid are 2 (even in (1,1)), 4 (in (1,2)), and 3 (in (2,1)). Placing 4 in (2,2) satisfies the requirement that it is greater than the number in (1,2) which is 4, and it also ensures that the sum of the first row (2 + 4 = 6) is greater than the sum of the second row (3 + 4 = 7). However, since this does not satisfy the sum condition, we cannot choose this. Therefore, it is invalid.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 1 because:
+This number is valid because placing 1 in (2,2) satisfies the condition that it is greater than the number in (1,2) (which is 4), and it also satisfies the requirement of having unique numbers in the grid. However, it does not satisfy the condition of the sum of the first row being greater than the second row, making it invalid.
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it is the only remaining option that can be placed in (2,2) without violating the rules. However, placing 3 in (2,2) does not satisfy the condition that (2,2) must be greater than (1,2) which is 4, making it invalid.
+❌ Invalid move! Violations:
+  - Row 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+  - Sum of first row must be greater than second row
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because it satisfies the condition of being greater than the number in (1,2) which is 4, and also follows the rules of placing numbers 1-4 in the grid. The grid would then be [[2, 4], [3, 4]] which violates the unique number rule in the column, thus invalid.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid because it does not conflict with existing numbers. Placing 1 in (2,2) would give [[2, 4], [3, 1]], and this conflicts with the requirement that (2,2) must be greater than (1,2), thus invalid.
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because it fulfills the condition of being greater than the number in (1,2) if (1,2) was indeed a number, therefore checks out against our current grid. The resulting grid [[2, 4], [3, 3]] would then provide a conflict in repetition in a column, hence invalid.
+❌ Invalid move! Violations:
+  - Row 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+  - Sum of first row must be greater than second row
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 3 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 2
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 10
+  Score: 0.86 → 0.86
+Level 3:
+  Visits: 29
+  Score: 0.85 → 0.85
+Backpropagated through 4 levels
+
+=========== Iteration 30/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.83)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 4, and it satisfies the condition that the sum of the first row (2 + 4 = 6) is greater than the sum of the second row (1 + 3 = 4).
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 4, and it satisfies the condition that the sum of the first row (2 + 4 = 6) is greater than the sum of the second row (1 + 4 = 5). However, it does not satisfy the uniqueness condition in the column.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it is not already present in the grid, and it satisfies the condition that the number in (2,2) must be greater than the number in (1,2) which is 4. Additionally, it maintains the uniqueness of numbers in the column.
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is not already present in the grid, and it satisfies the condition that the number in (2,2) must be greater than the number in (1,2) which is 4. However, this would violate the uniqueness condition in the column, therefore it is not a valid option.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because placing 3 in position (2,2) satisfies all rules: It is greater than the number in (1,2) which is 4, ensuring the condition that (2,2) > (1,2) is met. Also, it maintains uniqueness in the column and row as 1 and 2 are already used. This also helps fulfill the requirement that the sum of the first row (2+4=6) is greater than the sum of the second row (1+3=4).
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because placing 4 in position (2,2) maintains that (2,2) > (1,2), but violates the unique placement rule since it already exists in the grid. Therefore, it should not be suggested.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 2
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 10
+  Score: 0.83 → 0.84
+Level 3:
+  Visits: 30
+  Score: 0.85 → 0.85
+Backpropagated through 4 levels
+
+=========== Iteration 31/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.86)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is not already in the grid, it is greater than the number in (1,2) which is 3, and it satisfies the condition that the sum of the first row (2 + 3 = 5) is greater than the sum of the second row (1 + 3 = 4).
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is not already in the grid, it is greater than the number in (1,2) which is 3, and it satisfies the condition that the sum of the first row (2 + 3 = 5) is greater than the sum of the second row (1 + 4 = 5). However, this does not strictly satisfy the sum condition, so it is less preferred.
+❌ Invalid move! Violations:
+  - Sum of first row must be greater than second row
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it is not already present in the grid, it satisfies the condition that the number in (2,2) must be greater than the number in (1,2) (which is 3), and it adheres to the rules of unique numbers in each row and column.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) (which is 3), and it satisfies the condition of unique numbers in each row and column.
+❌ Invalid move! Violations:
+  - Sum of first row must be greater than second row
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because it is the only remaining number that satisfies the condition of being greater than the number in (1,2) which is 3. Additionally, it ensures that the second row's sum, having 1 and 4, will be 5, satisfying the condition that the first row's sum (which is 5: 2 + 3) is greater than the second row's sum.
+❌ Invalid move! Violations:
+  - Sum of first row must be greater than second row
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 2
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 11
+  Score: 0.86 → 0.86
+Level 3:
+  Visits: 31
+  Score: 0.85 → 0.85
+Backpropagated through 4 levels
+
+=========== Iteration 32/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.86)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 2 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 2, and it satisfies the condition that the sum of the first row (2 + 2 = 4) is greater than the sum of the second row (1 + 3 = 4).
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 2, and it satisfies the condition that the sum of the first row (2 + 2 = 4) is greater than the sum of the second row (1 + 4 = 5).
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it is greater than the number in (1,2) which is 2. It also satisfies the condition that each number appears exactly once in the grid.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is greater than the number in (1,2) which is 2. Additionally, it is not present in the current grid, thus satisfying the uniqueness requirement.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because placing 3 in (2,2) satisfies the condition that it is greater than the number in (1,2) which is 2. It also maintains the unique placement of numbers in the grid.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because placing 4 in (2,2) also satisfies the condition that it is greater than the number in (1,2) which is 2. It also adheres to the unique number placement requirement.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 2 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 2
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 11
+  Score: 0.86 → 0.86
+Level 3:
+  Visits: 32
+  Score: 0.85 → 0.86
+Backpropagated through 4 levels
+
+=========== Iteration 33/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.84)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 2 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 2, and it satisfies the condition that the sum of the first row (2 + 2 = 4) is greater than the sum of the second row (1 + 3 = 4).
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 2, and it satisfies the condition that the sum of the first row (2 + 2 = 4) is greater than the sum of the second row (1 + 4 = 5).
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 2, and it satisfies the condition that the number in (2,2) must be greater than the number in (1,2). Additionally, placing 3 in (2,2) allows the first row to sum to 4 (2+2) and the second row to sum to 4 (1+3), which does not satisfy the sum condition. However, it is the only valid number that fits the constraints.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 2, and it satisfies the condition that the number in (2,2) must be greater than the number in (1,2). Placing 4 in (2,2) would result in the first row summing to 4 (2+2) and the second row summing to 5 (1+4), satisfying the condition that the sum of the first row is greater than the sum of the second row.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because placing 3 in position (2,2) meets the constraint that it is greater than the number in (1,2), which is 2. It also ensures that 1-4 are used exactly once in the grid, as the first row contains 2 and 1-4 has not been exhausted.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because placing 4 in position (2,2) satisfies the condition of being greater than the number in (1,2) (which is 2). Additionally, 4 has not yet been used in the grid, maintaining the uniqueness condition across the rows and columns.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 2 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 2
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 11
+  Score: 0.84 → 0.84
+Level 3:
+  Visits: 33
+  Score: 0.86 → 0.86
+Backpropagated through 4 levels
+
+=========== Iteration 34/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.86)
+- Grid state (score: 0.75)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 1 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 2 because:
+This number is valid because it is even and fits in the grid without violating the rules. The current grid has 2 in (1,1) and 1 in (1,2), leaving 3 and 4 for (2,2) and (2,1). Placing 2 in (2,1) allows for the possibility of placing 3 in (2,2), which satisfies the condition that (2,2) is greater than (1,2). Additionally, the sum of the first row (2 + 1 = 3) will be greater than the sum of the second row (2 + 3 = 5).
+✅ Valid move! Adding node for number 2
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is the only remaining number that can be placed in (2,1) without violating the unique number rule in the columns. If 4 is placed in (2,1), then 3 can be placed in (2,2), satisfying the condition that (2,2) is greater than (1,2). However, this would make the sum of the second row (4 + 3 = 7) greater than the first row (2 + 1 = 3), which violates the sum condition. Therefore, this option is less favorable.
+✅ Valid move! Adding node for number 4
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 2 because:
+This number is valid because the current grid has 2 in (1,1) and 1 in (1,2), leaving only 3 and 4 available for (2,2). Since 2 is even, it satisfies the condition for (1,1). Moreover, placing 2 in (2,1) allows (2,2) to be either 3 or 4, which can satisfy the condition that (2,2) is greater than (1,2) (1). Additionally, the sum of the first row (2 + 1 = 3) will be greater than the sum of the second row (2 + 3 or 2 + 4 = 5 or 6) which satisfies the overall condition.
+✅ Valid move! Adding node for number 2
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it does not violate any placement rules. It allows (2,2) to be 4, which is greater than (1,2) (1). The sums of the rows will still satisfy the condition that the first row sum is greater than the second row sum.
+✅ Valid move! Adding node for number 3
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because placing 3 in (2,1) maintains the requirement that each number appears exactly once in both rows and columns. Additionally, it satisfies the condition that (2,2) must be greater than (1,2), as 1 is already in (1,2) and it allows for the remaining placement of 4 in (2,2). The sum of the first row would then be 2 + 1 = 3, and the sum of the second row would be 3 + 4 = 7, thereby satisfying the condition that the sum of the first row is greater than the sum of the second row.
+✅ Valid move! Adding node for number 3
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 1 │ 
+├───┼───┤
+│ 2 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 2
+  Score: 0.75 → 0.81
+Level 2:
+  Visits: 12
+  Score: 0.86 → 0.86
+Level 3:
+  Visits: 34
+  Score: 0.86 → 0.86
+Backpropagated through 4 levels
+
+=========== Iteration 35/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.86)
+- Grid state (score: 0.75)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 1 because:
+This number is valid because it is the only remaining number that can be placed in the first column without violating the rules. The number 2 is already in (1,1), and 4 is in (1,2), leaving only 1 for (2,1).
+✅ Valid move! Adding node for number 1
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 1 because:
+This number is valid because it is the only remaining number that can be placed in the first column without violating the rules. The first row already contains an even number (2), and placing 1 in (2,1) keeps the sum of the first row greater than the second row.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it is the only remaining odd number that can be placed in (2,1) without violating the rules. It ensures that the sum of the first row remains greater than the second row and does not conflict with existing placements.
+✅ Valid move! Adding node for number 3
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid because it is the only number left that can fit in position (2,1) while also satisfying the row and column constraints (each number must be unique in its row and column). The first row already has 2 and 4, and since (2,2) must be greater than (1,2), we can use 3 in (2,2), allowing the sum of row 1 (2 + 4) to be greater than the sum of row 2 (1 + 3).
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid since placing 3 in (2,1) gives a possible configuration (2,4) in the first row and (3,1) in the second row, which allows (2,2) to potentially be 4 based on constraints. It would not work with positions due to column uniqueness, but still keeps potential options open.
+✅ Valid move! Adding node for number 3
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 3 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 2
+  Score: 0.75 → 0.81
+Level 2:
+  Visits: 12
+  Score: 0.86 → 0.86
+Level 3:
+  Visits: 35
+  Score: 0.86 → 0.86
+Backpropagated through 4 levels
+
+=========== Iteration 36/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.84)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 4, and it satisfies the condition that the sum of the first row (2 + 4 = 6) is greater than the sum of the second row (1 + 3 = 4).
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 4, and it satisfies the condition that the sum of the first row (2 + 4 = 6) is greater than the sum of the second row (1 + 4 = 5). However, it does not satisfy the uniqueness condition in the column.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it is not already present in the grid, satisfies the condition of being greater than the number in (1,2) which is 4, and ensures that the sum of the first row (2 + 4 = 6) is greater than the sum of the second row (1 + 3 = 4).
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is not already present in the grid and satisfies the condition of being greater than the number in (1,2) which is 4. However, it does not satisfy the sum condition since it would make both rows equal (6), thus it's less likely to be a valid solution.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because it is greater than the existing number in (1, 2) which is 4 (which we need to be careful of), and it fits in the second row without violating the unique placement rule for row and column. Also, placing 3 in (2, 2) maintains the ascending property required for (2, 2) > (1, 2). The sum of the first row will be 6 (2 + 4) and the second row will be 4 (1 + 3), fulfilling the condition of the first row sum being greater than the second row's.
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+However, while technically greater than 0 in position (1, 2), placing 4 here cannot be valid due to already existing '4' and also violates the unique condition of grid, which states that each number 1-4 must appear exactly once in each row and column.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 2
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 12
+  Score: 0.84 → 0.84
+Level 3:
+  Visits: 36
+  Score: 0.86 → 0.86
+Backpropagated through 4 levels
+
+=========== Iteration 37/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.86)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 2 │ 
+├───┼───┤
+│ 3 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is greater than the number in (1,2) which is 2, satisfying the condition that the number in (2,2) must be greater than the number in (1,2). Additionally, placing 4 in (2,2) allows the first row to sum to 4 (2 + 2) and the second row to sum to 7 (3 + 4), satisfying the condition that the sum of the first row is greater than the sum of the second row.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is greater than the number in (1,2) which is 2, satisfying the condition that (2,2) must be greater than (1,2). Additionally, it is the only number left to place in the grid, ensuring that each number from 1-4 is used exactly once.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because it is the only remaining number that satisfies the requirement of being greater than the number in (1,2) which is 2, and it allows the first row's sum to be greater than the second row's. The first row will sum to 4 (2+2) and the second row to 7 (3+4), thus satisfying all conditions.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 2 │ 
+├───┼───┤
+│ 3 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 3
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 13
+  Score: 0.86 → 0.87
+Level 3:
+  Visits: 37
+  Score: 0.86 → 0.86
+Backpropagated through 4 levels
+
+=========== Iteration 38/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.86)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 4 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is the only remaining number that is greater than the number in (1,2) which is 3. Additionally, placing 4 in (2,2) satisfies the condition that the number in (2,2) is greater than the number in (1,2).
+❌ Invalid move! Violations:
+  - Row 2 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is the only remaining number that satisfies the condition of being greater than the number in position (1,2) which is 3. Additionally, placing 4 in (2,2) allows the first row to have a sum greater than the second row, satisfying all conditions.
+❌ Invalid move! Violations:
+  - Row 2 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because it is not already in the grid, it is greater than the number in (1,2) which is 3, and it allows the sum of the first row (2 + 4 = 6) to be greater than the sum of the second row (4 + 0 = 4).
+❌ Invalid move! Violations:
+  - Row 2 contains duplicates
+  - Sum of first row must be greater than second row
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 4 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 3
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 13
+  Score: 0.86 → 0.87
+Level 3:
+  Visits: 38
+  Score: 0.86 → 0.86
+Backpropagated through 4 levels
+
+=========== Iteration 39/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.84)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 1 │ 
+├───┼───┤
+│ 2 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is greater than the number in (1,2) which is 1, and it is not already present in the grid. Placing 3 in (2,2) will also help satisfy the condition that the sum of the first row (2 + 1 = 3) is greater than the sum of the second row (2 + 3 = 5).
+❌ Invalid move! Violations:
+  - Column 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is greater than the number in (1,2) which is 1, and it is not already present in the grid. Placing 4 in (2,2) will also satisfy the condition that the sum of the first row (2 + 1 = 3) is greater than the sum of the second row (2 + 4 = 6).
+❌ Invalid move! Violations:
+  - Column 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because placing 3 in (2,2) satisfies the condition that it is greater than the number in (1,2) which is 1. Additionally, it maintains the uniqueness of numbers in the row and column.
+❌ Invalid move! Violations:
+  - Column 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because placing 4 in (2,2) satisfies the condition that it is greater than the number in (1,2) which is 1. It also maintains the uniqueness of numbers in the row and column.
+❌ Invalid move! Violations:
+  - Column 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because it is greater than the number in (1,2) which is 1. Placing 3 in (2,2) would satisfy the condition of it being greater than 1 and is also part of the numbers 1-4 needed to complete the grid.
+❌ Invalid move! Violations:
+  - Column 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because it is greater than the number in (1,2) which is 1. Placing 4 in (2,2) meets the requirement of being greater and allows for filling out the rest of the grid without repeating any numbers.
+❌ Invalid move! Violations:
+  - Column 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 1 │ 
+├───┼───┤
+│ 2 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 2
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 13
+  Score: 0.84 → 0.85
+Level 3:
+  Visits: 39
+  Score: 0.86 → 0.86
+Backpropagated through 4 levels
+
+=========== Iteration 40/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.87)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 3 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is the only remaining number that is greater than the number in (1,2) which is 4. It also satisfies the condition that the number in (2,2) must be greater than the number in (1,2).
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+  - Sum of first row must be greater than second row
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is the only number left that is greater than the number in (1,2) which is 4. Since (2,2) must contain a number greater than (1,2), 4 is the only option that satisfies this condition.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+  - Sum of first row must be greater than second row
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because it is the only remaining number that maintains the uniqueness of each number across rows and columns, satisfies the condition that (2,2) is greater than (1,2), and allows the sum of the first row (2 + 4 = 6) to be greater than the sum of the second row (3 + 4 = 7). Since the only missing number in column 2 is 4 and it's also greater than 0, it fulfills all the rules.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+  - Sum of first row must be greater than second row
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 3 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 3
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 14
+  Score: 0.87 → 0.87
+Level 3:
+  Visits: 40
+  Score: 0.86 → 0.86
+Backpropagated through 4 levels
+
+=========== Iteration 41/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.87)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is not already in the grid, it is greater than the number in (1,2) which is 4, and it satisfies the condition that the sum of the first row (2 + 4 = 6) is greater than the sum of the second row (1 + 3 = 4).
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is not already in the grid, it is greater than the number in (1,2) which is 4, but it does not satisfy the condition that the sum of the first row is greater than the sum of the second row, so it is not a valid suggestion.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it satisfies all constraints: it is greater than the number in (1,2) which is 4, and it is not already placed in the grid. It also allows the first row to have a greater sum than the second row, as the first row would sum to 6 (2 + 4) and the second row would sum to 4 (1 + 3).
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is greater than the number in (1,2) which is 4. However, placing 4 in (2,2) would make the sum of the second row equal to the sum of the first row, violating the constraint that the first row's sum must be greater. Therefore, while it fits the positional constraints, it does not satisfy the sum constraint.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because placing 3 in (2,2) satisfies all given constraints: the number in (2,2) is greater than the number in (1,2) which is 4, it keeps the number placements unique in its row and column, and the sum of the first row (2 + 4 = 6) is greater than the sum of the second row (1 + 3 = 4).
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because placing 4 in (2,2) satisfies the condition of being greater than the number in (1,2) which is already 4 (not strict), but it violates the uniqueness constraint since 4 is already in the first row.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 3
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 14
+  Score: 0.87 → 0.87
+Level 3:
+  Visits: 41
+  Score: 0.86 → 0.86
+Backpropagated through 4 levels
+
+=========== Iteration 42/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.85)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 4 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is the only remaining number that can be placed in (2,2) while satisfying the condition that it is greater than the number in (1,2) which is 3. Additionally, placing 4 here allows the first row to sum to 5 (2 + 3) and the second row to sum to 4 (4 + 0), satisfying the condition that the sum of the first row is greater than the sum of the second row.
+❌ Invalid move! Violations:
+  - Row 2 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is the only number remaining that is greater than the number in (1,2) which is 3, satisfying the condition that the number in (2,2) must be greater than the number in (1,2). Additionally, placing 4 in (2,2) allows the first row to sum to 5 (2+3) and the second row to sum to 4 (4+0), satisfying the condition that the sum of the first row is greater than the sum of the second row.
+❌ Invalid move! Violations:
+  - Row 2 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because it is not already in the grid, satisfies the condition of being greater than the number in (1,2) which is 3, and allows the first row to have a greater sum than the second row.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because it is the only remaining number in the set that is greater than the number in (1,2) which is 3, and it allows for the first row to have a greater sum than the second row.
+❌ Invalid move! Violations:
+  - Row 2 contains duplicates
+  - Sum of first row must be greater than second row
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 4 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 2
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 14
+  Score: 0.85 → 0.85
+Level 3:
+  Visits: 42
+  Score: 0.86 → 0.86
+Backpropagated through 4 levels
+
+=========== Iteration 43/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.87)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 4 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is the only remaining number that satisfies the condition of being greater than the number in (1,2) which is 3. Additionally, placing 4 in (2,2) allows the first row to sum to 5 (2 + 3) and the second row to sum to 4 (4 + 0), satisfying the condition that the sum of the first row is greater than the sum of the second row.
+❌ Invalid move! Violations:
+  - Row 2 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is the only remaining number that is greater than the number in (1,2) which is 3. Additionally, placing 4 in (2,2) satisfies the condition that the number in (2,2) is greater than the number in (1,2).
+❌ Invalid move! Violations:
+  - Row 2 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid because 1 is not present in the grid and fulfills the requirement that it must be greater than the number in position (1,2), which is 3. Thus, it satisfies the condition that number at (2,2) is greater than the number at (1,2).
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is invalid because it violates the uniqueness condition as 3 is already present in the grid.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because 4 is not present in the grid and is greater than 0 (the number at (1,2)). This satisfies the requirement that the number at (2,2) is greater than that at (1,2). However, it may affect the row sum requirement if combined with certain values in row 1.
+❌ Invalid move! Violations:
+  - Row 2 contains duplicates
+  - Sum of first row must be greater than second row
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 4 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 3
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 15
+  Score: 0.87 → 0.87
+Level 3:
+  Visits: 43
+  Score: 0.86 → 0.86
+Backpropagated through 4 levels
+
+=========== Iteration 44/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.87)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 4 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is the only remaining number that can be placed in (2,2) without violating the rules. It is greater than the number in (1,2) which is 3, and it satisfies the condition that the number in (2,2) must be greater than the number in (1,2).
+❌ Invalid move! Violations:
+  - Row 2 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is the only number available that is greater than the number in (1,2) which is 3. It also satisfies the condition that the number in (2,2) must be greater than the number in (1,2).
+❌ Invalid move! Violations:
+  - Row 2 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because there are currently no 4s in the grid, and it is greater than the number in (1,2) which is 3. It also satisfies the sum condition, as placing 4 in (2,2) will help ensure the first row's sum of 5 (2+3) is greater than the second row's sum of 4 (4+0).
+❌ Invalid move! Violations:
+  - Row 2 contains duplicates
+  - Sum of first row must be greater than second row
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 4 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 3
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 15
+  Score: 0.87 → 0.87
+Level 3:
+  Visits: 44
+  Score: 0.86 → 0.86
+Backpropagated through 4 levels
+
+=========== Iteration 45/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.85)
+- Grid state (score: 0.75)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ · │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 1 because:
+This number is valid because it is the only remaining number that can be placed in (2,1) without violating the rules. The existing numbers in the grid are 2 and 4, and since 1 is not present, it satisfies the condition of each number appearing exactly once in each row and column.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is also a remaining number that can be placed in (2,1). Placing 3 in (2,1) allows for the number in (2,2) to be 4, which is greater than the number in (1,2) (4). This satisfies the condition of the number in (2,2) being greater than the number in (1,2).
+✅ Valid move! Adding node for number 3
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 1 because:
+This number is valid because it is the only number left that can be placed in the first column without violating the rules. The first column already has 2, and the second column has 4, making 1 the only valid choice for (2,1).
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it is not present in the first column or the second column, and placing 3 in (2,1) allows the grid to satisfy the requirement that the sum of the first row (2 + 4) is greater than the sum of the second row (3 + 0).
+✅ Valid move! Adding node for number 3
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 1 because:
+This number is valid because placing 1 in (2,1) allows for the grid to have each number from 1 to 4 used exactly once. In the first row, we already have 2 and 4, and placing 1 in the second row helps ensure that the sum of the first row (2 + 4 = 6) is greater than that of the second row (1 + 0 = 1). Also, it satisfies the condition that the number in (2,2) should be greater than (1,2) as (1,2) is 0 and (2,2) can be either 3 or 4.
+✅ Valid move! Adding node for number 1
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because placing 3 in (2,1) allows for the completion of the grid with 2, 4 in the first row, and 3, possibly 0 in the second. When we place 3, (2,2) could be 4, which meets the condition that (2,2) is greater than (1,2), and the sum of the first row remains greater than that of the second row.
+✅ Valid move! Adding node for number 3
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 3 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 2
+  Score: 0.75 → 0.81
+Level 2:
+  Visits: 15
+  Score: 0.85 → 0.85
+Level 3:
+  Visits: 45
+  Score: 0.86 → 0.86
+Backpropagated through 4 levels
+
+=========== Iteration 46/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.87)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 3 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is the only remaining number that is greater than the number in (1,2) which is 4. It also satisfies the condition that the number in (2,2) must be greater than the number in (1,2).
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+  - Sum of first row must be greater than second row
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is greater than the number in (1,2) which is 4, satisfying the condition that (2,2) must be greater than (1,2). It also does not violate the rule of using each number 1-4 exactly once in the grid, as 4 is not already present.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+  - Sum of first row must be greater than second row
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because it is the only number left to place in the grid, satisfies the condition of being greater than the number in (1,2) which is 4, and completes the grid with unique values in each row and column.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+  - Sum of first row must be greater than second row
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 3 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 3
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 16
+  Score: 0.87 → 0.87
+Level 3:
+  Visits: 46
+  Score: 0.86 → 0.86
+Backpropagated through 4 levels
+
+=========== Iteration 47/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.87)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 4, and it satisfies the condition that the sum of the first row (2 + 4 = 6) is greater than the sum of the second row (1 + 3 = 4).
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 4, and it satisfies the condition that the sum of the first row (2 + 4 = 6) is greater than the sum of the second row (1 + 4 = 5). However, it does not satisfy the condition of being greater than the number in (1,2).
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it is greater than the number in (1,2) which is 4, satisfying the condition that the number in (2,2) must be greater than (1,2). Additionally, placing 3 in (2,2) would allow for the first row to sum to 6 (2 + 4) and the second row to sum to 4 (1 + 3), maintaining the requirement that the sum of the first row is greater than the sum of the second row.
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is greater than the number in (1,2) which is 4. However, this placement would not satisfy the requirement that the sum of the first row is greater than the sum of the second row, as both rows would then sum to 6. Therefore, this option is not valid.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because placing 3 in (2,2) meets the requirement that it is greater than the number in (1,2) which is 4, and allows for the sum of the first row to be greater than the second row since the first row would sum to 6 (2+4) while the second row would sum to 4 (1+3).
+❌ Invalid move! Violations:
+  - Number in (2,2) must be greater than (1,2)
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number cannot be valid since (1,2) is already filled with 4. Hence, it cannot be greater than itself.
+❌ Invalid move! Violations:
+  - Column 2 contains duplicates
+  - Number in (2,2) must be greater than (1,2)
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 4 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 3
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 16
+  Score: 0.87 → 0.87
+Level 3:
+  Visits: 47
+  Score: 0.86 → 0.86
+Backpropagated through 4 levels
+
+=========== Iteration 48/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.85)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 3 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is the only remaining number that is greater than the number in (1,2) which is 3. Additionally, placing 4 in (2,2) satisfies the condition that the number in (2,2) is greater than the number in (1,2).
+❌ Invalid move! Violations:
+  - Sum of first row must be greater than second row
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is the only remaining number not already in the grid, and it satisfies the condition of being greater than the number in (1,2) which is 3.
+❌ Invalid move! Violations:
+  - Sum of first row must be greater than second row
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because placing 4 in (2,2) satisfies the condition that it is greater than the number in (1,2) (which is 3) and allows all rows and columns to maintain the rule of containing unique numbers from 1 to 4.
+❌ Invalid move! Violations:
+  - Sum of first row must be greater than second row
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 3 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 3
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 16
+  Score: 0.85 → 0.85
+Level 3:
+  Visits: 48
+  Score: 0.86 → 0.86
+Backpropagated through 4 levels
+
+=========== Iteration 49/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.87)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 4 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is the only remaining number that satisfies the condition of being greater than the number in (1,2) which is 3. Additionally, placing 4 in (2,2) allows the first row to sum to 5 (2 + 3) and the second row to sum to 4 (4 + 0), satisfying the condition that the sum of the first row is greater than the sum of the second row.
+❌ Invalid move! Violations:
+  - Row 2 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is the only number left that can satisfy the condition of being greater than the number in (1,2), which is 3. Additionally, it adheres to the rule that each number from 1-4 must appear exactly once in the grid.
+❌ Invalid move! Violations:
+  - Row 2 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because it is greater than the existing number in (1,2) which is 3. Additionally, placing 4 in (2,2) gives a total sum for the first row (2 + 3 = 5) which is greater than the second row (4 + 0 = 4). This also ensures that each number 1-4 appears exactly once in the grid.
+❌ Invalid move! Violations:
+  - Row 2 contains duplicates
+  - Sum of first row must be greater than second row
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 3 │ 
+├───┼───┤
+│ 4 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 3
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 17
+  Score: 0.87 → 0.87
+Level 3:
+  Visits: 49
+  Score: 0.86 → 0.86
+Backpropagated through 4 levels
+
+=========== Iteration 50/50 ===========
+
+🔍 SELECTION Phase
+Selection path:
+- Grid state (score: 0.87)
+- Grid state (score: 0.88)
+- Grid state (score: 0.00)
+
+🌱 EXPANSION Phase
+Current grid state:
+
+┌───┬───┐
+│ 2 │ 2 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+
+Using CONSERVATIVE (temp=0.1)
+Purpose: Conservative reasoning with high precision
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 3 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 2, and it satisfies the condition that the number in (2,2) must be greater than the number in (1,2). Additionally, placing 3 in (2,2) allows the first row to sum to 4 (2 + 2) and the second row to sum to 4 (1 + 3), which does not satisfy the sum condition. However, it is the only valid option left.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.1, description='Conservative reasoning with high precision') suggests 4 because:
+This number is valid because it is not already present in the grid, it is greater than the number in (1,2) which is 2, and it satisfies the condition that the number in (2,2) must be greater than the number in (1,2). Placing 4 in (2,2) allows the first row to sum to 4 (2 + 2) and the second row to sum to 5 (1 + 4), which satisfies the sum condition.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using BALANCED (temp=0.5)
+Purpose: Balanced exploration and exploitation
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 3 because:
+This number is valid because it is greater than the number in (1,2) which is 2, satisfying the constraint that the number in (2,2) must be greater than the number in (1,2). Additionally, placing 3 here maintains the uniqueness of numbers in the columns and rows.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=0.5, description='Balanced exploration and exploitation') suggests 4 because:
+This number is valid because it is greater than the number in (1,2) which is 2, fulfilling the requirement that the number in (2,2) must be greater than the number in (1,2). It also maintains the uniqueness of numbers in the grid.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Using CREATIVE (temp=1.0)
+Purpose: Creative reasoning with more exploration
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 3 because:
+This number is valid because it is the only remaining number that satisfies the condition of being greater than the number in (1,2), which is currently 2. Placing 3 here would also allow for the row and column constraints to be maintained.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+Model ModelConfig(name='gpt-4o-mini', temperature=1.0, description='Creative reasoning with more exploration') suggests 4 because:
+This number is valid because it is greater than the number in (1,2) which is 2, and it is the last remaining number that can fit in this grid. Placing 4 here also satisfies the requirement for both the row and column uniqueness.
+❌ Invalid move! Violations:
+  - Row 1 contains duplicates
+  - Sum of first row must be greater than second row
+
+📊 SIMULATION & EVALUATION Phase
+Evaluating grid:
+
+┌───┬───┐
+│ 2 │ 2 │ 
+├───┼───┤
+│ 1 │ · │ 
+└───┴───┘
+Progress score: 0.75 (3/4 cells filled)
+Constraint score: 1.00
+Final evaluation score: 0.88
+
+⬆️ BACKPROPAGATION Phase
+Level 0:
+  Visits: 1
+  Score: 0.00 → 0.88
+Level 1:
+  Visits: 3
+  Score: 0.88 → 0.88
+Level 2:
+  Visits: 17
+  Score: 0.87 → 0.87
+Level 3:
+  Visits: 50
+  Score: 0.86 → 0.86
+Backpropagated through 4 levels
+
+Search Results:
+Found solution: False
+Completed in 50 iterations
+
+Final Grid:
+[2, 3]
+[0, 0]
+
+Reasoning Path:
+
+Step 1:
+This number is valid because it is the only even number available (1-4) that can be placed in position (1,1) while satisfying the requirement that the number in (1,1) must be even.
+
+Step 2:
+This number is valid because placing 3 in (1,2) allows the first row to sum to 5 (2 + 3), while the second row can only sum to 1 (1 + 0), satisfying the condition that the sum of the first row is greater than the second row. Additionally, it does not violate the column constraint since 3 is not already in column 2.
