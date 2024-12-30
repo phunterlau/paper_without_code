@@ -1,0 +1,106 @@
+=== Phase 1: Training with Legacy Technology ===
+
+Learning legacy class: storage_issue
+
+Learning legacy class: display_problem
+
+=== Testing with Legacy Technology ===
+
+Query: My floppy drive isn't working
+Predicted class: storage_issue
+Confidence: 0.89
+Out of domain: False
+Statistical confidence: 1.00
+Semantic confidence: 0.71
+
+Query: CRT monitor showing ghost images
+Predicted class: display_problem
+Confidence: 0.89
+Out of domain: False
+Statistical confidence: 1.00
+Semantic confidence: 0.72
+
+Query: Tape backup failed
+Predicted class: storage_issue
+Confidence: 0.86
+Out of domain: False
+Statistical confidence: 1.00
+Semantic confidence: 0.64
+
+=== Testing with Modern Technology (Concept Drift) ===
+
+Query: Cloud storage not syncing with my device
+Predicted class: storage_issue
+Confidence: 0.86
+Out of domain: False
+Statistical confidence: 1.00
+Semantic confidence: 0.65
+
+Query: Can't access my Google Drive files
+Predicted class: storage_issue
+Confidence: 0.85
+Out of domain: False
+Statistical confidence: 1.00
+Semantic confidence: 0.62
+
+Query: 4K display has dead pixels
+Predicted class: display_problem
+Confidence: 0.88
+Out of domain: False
+Statistical confidence: 1.00
+Semantic confidence: 0.70
+
+Query: OLED screen showing burn-in
+Predicted class: display_problem
+Confidence: 0.87
+Out of domain: False
+Statistical confidence: 1.00
+Semantic confidence: 0.68
+
+Query: NVMe SSD not showing up in BIOS
+Predicted class: storage_issue
+Confidence: 0.85
+Out of domain: False
+Statistical confidence: 1.00
+Semantic confidence: 0.61
+
+=== Phase 3: Zero-shot Class Extension ===
+
+Learning new class with minimal examples: connectivity_issue
+
+Testing zero-shot generalization:
+
+Query: Bluetooth not pairing with my device
+Predicted class: storage_issue
+Confidence: 0.82
+Out of domain: False
+Statistical confidence: 1.00
+Semantic confidence: 0.54
+
+Query: 5G signal drops in my area
+Predicted class: connectivity_issue
+Confidence: 0.86
+Out of domain: False
+Statistical confidence: 1.00
+Semantic confidence: 0.66
+
+Query: VPN connection keeps timing out
+Predicted class: connectivity_issue
+Confidence: 0.88
+Out of domain: False
+Statistical confidence: 1.00
+Semantic confidence: 0.69
+
+Query: Ethernet port not detecting cable
+Predicted class: connectivity_issue
+Confidence: 0.86
+Out of domain: False
+Statistical confidence: 1.00
+Semantic confidence: 0.65
+
+Query: DNS server not responding
+Predicted class: connectivity_issue
+Confidence: 0.85
+Out of domain: False
+Statistical confidence: 1.00
+Semantic confidence: 0.63
