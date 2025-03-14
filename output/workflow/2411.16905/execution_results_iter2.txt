@@ -1,0 +1,37 @@
+Success: True
+
+Standard Output:
+Epoch 1/10, Loss: 0.0653
+Epoch 2/10, Loss: 0.0102
+Epoch 3/10, Loss: 0.0038
+Epoch 4/10, Loss: 0.0023
+Epoch 5/10, Loss: 0.0016
+Epoch 6/10, Loss: 0.0012
+Epoch 7/10, Loss: 0.0011
+Epoch 8/10, Loss: 0.0009
+Epoch 9/10, Loss: 0.0008
+Epoch 10/10, Loss: 0.0007
+Test Loss: 0.0011
+
+
+
+Standard Error:
+2025-03-14 01:39:53.594 python[74821:8281590] +[IMKClient subclass]: chose IMKClient_Modern
+2025-03-14 01:39:53.594 python[74821:8281590] +[IMKInputSession subclass]: chose IMKInputSession_Modern
+
+
+
+Analysis:
+Unknown error: 2025-03-14 01:39:53.594 python[74821:8281590] +[IMKClient subclass]: chose IMKClient_Modern
+Output: Epoch 1/10, Loss: 0.0653
+Epoch 2/10, Loss: 0.0102
+Epoch 3/10, Loss: 0.0038
+Epoch 4/10, Loss: 0.0023
+Epoch 5/10, Loss: 0.0016
+Epoch 6/10, Loss: 0.0012
+Epoch 7/10, Loss: 0.0011
+Epoch 8/10, Loss: 0.0009
+Epoch 9/10, Loss: 0.0008
+Epoch 10/10, Loss: 0.0007
+Test Loss: 0.0011
+Execution completed successfully.
