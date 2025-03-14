@@ -1,0 +1,16 @@
+markitdown[all]~=0.1.0a1
+requests
+anthropic
+openai
+PyPDF2
+tqdm
+numpy
+pandas
+matplotlib
+scikit-learn
+torch
+torchvision
+torchaudio
+seaborn
+pyyaml
+tiktoken
