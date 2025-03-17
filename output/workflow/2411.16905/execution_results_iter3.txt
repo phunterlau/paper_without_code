@@ -1,0 +1,33 @@
+Success: True
+
+Standard Output:
+Epoch 1/10, Loss: 0.0508
+Epoch 2/10, Loss: 0.0075
+Epoch 3/10, Loss: 0.0035
+Epoch 4/10, Loss: 0.0021
+Epoch 5/10, Loss: 0.0014
+Epoch 6/10, Loss: 0.0011
+Epoch 7/10, Loss: 0.0009
+Epoch 8/10, Loss: 0.0008
+Epoch 9/10, Loss: 0.0007
+Epoch 10/10, Loss: 0.0006
+Test Loss: 0.0011
+
+
+
+Standard Error:
+
+
+Analysis:
+Output: Epoch 1/10, Loss: 0.0508
+Epoch 2/10, Loss: 0.0075
+Epoch 3/10, Loss: 0.0035
+Epoch 4/10, Loss: 0.0021
+Epoch 5/10, Loss: 0.0014
+Epoch 6/10, Loss: 0.0011
+Epoch 7/10, Loss: 0.0009
+Epoch 8/10, Loss: 0.0008
+Epoch 9/10, Loss: 0.0007
+Epoch 10/10, Loss: 0.0006
+Test Loss: 0.0011
+Execution completed successfully.
