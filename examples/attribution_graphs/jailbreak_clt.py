@@ -54,12 +54,11 @@ INVESTIGATION_TYPE = "Jailbreak" # For printing interpretation
 # INVESTIGATION_TYPE = "Hallucination"
 
 
-# --- Ablation Target ---
-# Set the target layer and component type here
-ABLATION_TARGET = {'layer': 20, 'type': 'mlp'} # Example: investigate a later layer MLP
+# ABLATION_TARGET will be set dynamically in the main loop
+# ABLATION_TARGET = {'layer': 20, 'type': 'mlp'} # Example: investigate a later layer MLP
 # ABLATION_TARGET = None # Run baseline only
 
-VISUALIZE = True
+VISUALIZE = False # Disable visualization during loop to avoid clutter
 # --- End Configuration Changes ---
 
 
@@ -254,7 +253,7 @@ def visualize_model_structure( model, highlight_layer: Optional[int] = None, hig
             node_labels[node_name] += label_suffix
     nx.draw(G, pos, with_labels=False, node_size=1200, node_color=node_colors, edge_color="gray", width=1.5, arrowsize=15)
     nx.draw_networkx_labels(G, pos, labels=node_labels, font_size=9); plt.title(f"Simplified Model Structure ({MODEL_NAME} - {num_layers} Layers)")
-    plt.xticks([]); plt.yticks([]); plt.box(False); plt.tight_layout(); plt.show()
+    plt.xticks([]); plt.yticks([]); plt.box(False); plt.tight_layout(); # plt.show() # Don't show automatically
 
 
 # --- Main Execution Block ---
@@ -267,15 +266,11 @@ if __name__ == "__main__":
     model = None; tokenizer = None
     try:
         print(f"\nLoading tokenizer '{MODEL_NAME}'...")
-        # IMPORTANT: You MUST get the actual token IDs for your desired/problematic words
-        # using the specific tokenizer and update the lists near the top of the script.
-        # The placeholder IDs (e.g., [40, 11117]) WILL NOT WORK correctly otherwise.
         tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, trust_remote_code=True)
         if tokenizer.pad_token is None: tokenizer.pad_token = tokenizer.eos_token
         print("\n!!! IMPORTANT: Ensure CURRENT_DESIRED_IDS and CURRENT_PROBLEMATIC_IDS lists")
         print(f"!!! near the top of the script contain the correct token IDs for '{MODEL_NAME}'")
         print(f"!!! for the chosen investigation type: {INVESTIGATION_TYPE}\n")
-
 
         print(f"Loading model '{MODEL_NAME}' to {DEVICE.upper()} with {DTYPE_NAME}...")
         load_start = time.time()
@@ -283,38 +278,94 @@ if __name__ == "__main__":
         if not hasattr(model, 'hf_device_map'): model.to(DEVICE)
         load_end = time.time(); print(f"Model loaded successfully ({load_end - load_start:.2f}s).")
 
-        # --- Run Ablation Experiment ---
-        logit_diffs, baseline_pred, _ = run_and_compare_ablation_logits(
+        # --- Get Number of Layers ---
+        layers = find_transformer_layers(model)
+        if layers is None:
+            print("Error: Could not determine the number of layers in the model.")
+            sys.exit(1)
+        num_layers = len(layers)
+        print(f"Model has {num_layers} layers.")
+
+        # --- Run Baseline ---
+        print("\n--- Running Baseline ---")
+        baseline_diffs, baseline_pred, baseline_pred_id = run_and_compare_ablation_logits(
             model, tokenizer, CURRENT_PROMPT, DEVICE, TORCH_DTYPE,
-            CURRENT_DESIRED_IDS, CURRENT_PROBLEMATIC_IDS, ABLATION_TARGET
+            CURRENT_DESIRED_IDS, CURRENT_PROBLEMATIC_IDS, None # No ablation for baseline
         )
+        if baseline_pred is None:
+             print("Baseline run failed. Exiting.")
+             sys.exit(1)
+        print(f"Baseline Top Prediction: '{baseline_pred}' (ID: {baseline_pred_id})")
 
-        # --- Interpret and Visualize ---
-        if logit_diffs is not None:
-            print(f"\n--- Experiment Summary ({INVESTIGATION_TYPE}) ---")
-            print(f"Prompt: \"{CURRENT_PROMPT}\"")
-            print(f"Baseline Top Prediction: '{baseline_pred}'")
-            if ABLATION_TARGET:
-                target_str = f"Layer {ABLATION_TARGET['layer']} {ABLATION_TARGET['type'].upper()}"
-                print(f"Ablation Target: {target_str}")
-                print("Interpretation Guideline:")
-                if INVESTIGATION_TYPE == "Jailbreak":
-                    print("  - Positive diff for 'desired' (refusal) tokens suggests ablation HELPS safety.")
-                    print("  - Negative diff for 'problematic' (compliance) tokens suggests ablation HELPS safety.")
-                elif INVESTIGATION_TYPE == "Hallucination":
-                    print("  - Negative diff for 'problematic' (hallucination) tokens suggests ablation REDUCES hallucination.")
-                # Add more guidelines as needed
 
-            else:
-                 print("Baseline run only.")
+        # --- Loop Through Ablations ---
+        print(f"\n--- Starting Ablation Loop for {INVESTIGATION_TYPE} ---")
+        best_score = -float('inf')
+        best_layer = -1
+        best_type = None
+        results_summary = [] # Store brief results
 
-            # --- Visualize ---
-            if VISUALIZE:
-                h_layer = ABLATION_TARGET.get('layer') if ABLATION_TARGET else None
-                h_type = ABLATION_TARGET.get('type') if ABLATION_TARGET else None
-                visualize_model_structure(model, highlight_layer=h_layer, highlight_type=h_type)
+        for layer_idx in range(num_layers):
+            for comp_type in ['mlp', 'attn']:
+                current_ablation_target = {'layer': layer_idx, 'type': comp_type}
+
+                logit_diffs, _, _ = run_and_compare_ablation_logits(
+                    model, tokenizer, CURRENT_PROMPT, DEVICE, TORCH_DTYPE,
+                    CURRENT_DESIRED_IDS, CURRENT_PROBLEMATIC_IDS, current_ablation_target
+                )
+
+                if logit_diffs is not None:
+                    # Calculate score based on investigation type
+                    current_score = 0
+                    if INVESTIGATION_TYPE == "Jailbreak":
+                        # Maximize desired (refusal), minimize problematic (compliance)
+                        desired_sum = sum(diff for key, diff in logit_diffs.items() if key.startswith('desired'))
+                        problematic_sum = sum(diff for key, diff in logit_diffs.items() if key.startswith('problematic'))
+                        current_score = desired_sum - problematic_sum
+                        results_summary.append(f"L{layer_idx}-{comp_type.upper()}: Score={current_score:.3f} (Desired: {desired_sum:+.3f}, Problematic: {problematic_sum:+.3f})")
+                    elif INVESTIGATION_TYPE == "Hallucination":
+                        # Minimize problematic (hallucination) -> Maximize negative sum
+                        problematic_sum = sum(diff for key, diff in logit_diffs.items() if key.startswith('problematic'))
+                        current_score = -problematic_sum # Higher score means more negative diff
+                        results_summary.append(f"L{layer_idx}-{comp_type.upper()}: Score={current_score:.3f} (Problematic Sum: {problematic_sum:+.3f})")
+                    # Add other investigation types if needed
+
+                    if current_score > best_score:
+                        best_score = current_score
+                        best_layer = layer_idx
+                        best_type = comp_type
+                        print(f"*** New Best Found: Layer {best_layer} {best_type.upper()} (Score: {best_score:.3f}) ***")
+                else:
+                    print(f"Ablation failed for Layer {layer_idx} {comp_type.upper()}. Skipping.")
+                    results_summary.append(f"L{layer_idx}-{comp_type.upper()}: FAILED")
+
+
+        # --- Final Summary ---
+        print(f"\n--- Ablation Experiment Complete ({INVESTIGATION_TYPE}) ---")
+        print(f"Prompt: \"{CURRENT_PROMPT}\"")
+        print(f"Baseline Top Prediction: '{baseline_pred}' (ID: {baseline_pred_id})")
+        print("\n--- Ablation Results Summary ---")
+        # for line in results_summary: print(line) # Optional: print all results
+
+        if best_layer != -1:
+            print(f"\nMost impactful ablation found:")
+            print(f"  Layer: {best_layer}")
+            print(f"  Type: {best_type.upper()}")
+            print(f"  Score: {best_score:.3f}")
+            if INVESTIGATION_TYPE == "Jailbreak":
+                 print("  (Higher score means ablation shifted logits more towards desired refusal / away from problematic compliance)")
+            elif INVESTIGATION_TYPE == "Hallucination":
+                 print("  (Higher score means ablation shifted logits most strongly away from problematic hallucination tokens)")
+
+            # Optional: Visualize the best one
+            if VISUALIZE: # Re-enable visualization just for the best
+                 print("\nVisualizing structure with most impactful ablation highlighted...")
+                 visualize_model_structure(model, highlight_layer=best_layer, highlight_type=best_type)
+                 plt.show() # Explicitly show the plot now
+
         else:
-            print("\nAblation experiment failed.")
+            print("\nNo successful ablations were completed or no best score could be determined.")
+
 
     except ImportError as e: print(f"\nError: Missing library. {e}")
     except Exception as e: print(f"\nAn unexpected error: {e}"); import traceback; traceback.print_exc()
